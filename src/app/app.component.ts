@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Link } from './link/link.model';
+import { Votaciones } from './votaciones/votaciones.model';
 
 @Component({
   selector: 'app-root',
@@ -8,26 +8,26 @@ import { Link } from './link/link.model';
 })
 export class AppComponent {
 
-  links: Link[];
+  votaciones: Votaciones[];
 
   constructor() {
-    this.links = [
-      new Link('angular', 'http://angular.io', 10),
-      new Link('google', 'http://google.com', 100),
-      new Link('youtube', 'http://youtube.com', 1000)
+    this.votaciones = [
+      new Votaciones('angular', 'http://angular.io', 10),
+      new Votaciones('google', 'http://google.com', 100),
+      new Votaciones('youtube', 'http://youtube.com', 1000)
     ];
   }
 
-  addLink(title: HTMLInputElement, link: HTMLInputElement): boolean {
-    console.log('Titulo: ' + title.value);
-    this.links.push(new Link(title.value, link.value));
-    title.value = '';
-    link.value = '';
+  addVotacion(titulo: HTMLInputElement, enlace: HTMLInputElement): boolean {
+    console.log('Titulo: ' + titulo.value);
+    this.votaciones.push(new Votaciones(titulo.value, enlace.value));
+    titulo.value = '';
+    enlace.value = '';
     return false;
   }
 
-  sortedLinks() {
-    return this.links.sort((a: Link, b: Link) => b.votes - a.votes);
+  votacionesOrdenadas() {
+    return this.votaciones.sort((a: Votaciones, b: Votaciones) => b.votos - a.votos);
   }
 
 }

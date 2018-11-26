@@ -1,6 +1,7 @@
 {
   "name": "angular-links-vote-app",
   "version": "0.0.0",
+  "start": "ng serve --proxy-config proxy.config.json",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

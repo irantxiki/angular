@@ -1,8 +1,7 @@
 <!-- NAVIGATION -->
 <nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Angular Links Vote</a>
+  <a class="navbar-brand" href="#">Votaciones</a>
 </nav>
-
 
 <div class="container p-4">
   <div class="row">
@@ -10,23 +9,20 @@
     <div class="col-md-8 offset-md-2">
       <div class="card">
         <form class="card-body">
-          <h3 class="card-title">Add A Link</h3>
-          <label for="title">Title</label>
-          <input type="text" name="title" #newtitle class="form-control" autofocus>
+          <h3 class="card-title">Añadir votación</h3>
+          <label for="titulo">Titulo</label>
+          <input type="text" name="titulo" #newTitulo class="form-control" autofocus>
 
-          <label for="link">Link</label>
-          <input type="text" name="link" #newlink class="form-control">
+          <label for="enlace">Enlace</label>
+          <input type="text" name="enlace" #newEnlace class="form-control">
 
-          <button (click)="addLink(newtitle, newlink)" class="btn btn-primary btn-block mt-4">
-            Submit Link
+          <button (click)="addVotacion(newTitulo, newEnlace)" class="btn btn-primary btn-block mt-4">
+            Guardar Votación
           </button>
         </form>
       </div>
     </div>
   </div>
-  <!-- LINKS -->
-  <app-link *ngFor="let link of sortedLinks()" [link]="link"></app-link>
+  <!-- Votaciones -->
+  <app-votaciones *ngFor="let votacionInput of votacionesOrdenadas()" [votacionInput]="votacionInput"></app-votaciones>
 </div>
-
-
-
