@@ -1,25 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { VotacionesComponent } from './votaciones/votaciones.component';
+import { ConfigComponent } from './config/config.component';
+import { MessagesComponent } from './messages/messages.component';
+import { UploaderComponent } from './uploader/uploader.component';
 import { AppRoutingModule } from './app-routing.module';
 import { VotacionesService} from './votaciones/votaciones.service';
 import { HttpClientModule } from "@angular/common/http";
+import { NuevaVotacionComponent } from './nueva-votacion/nueva-votacion.component';
+import { ListaVotacionesComponent } from './lista-votaciones/lista-votaciones.component';
+
+const appRoutes: Routes = [
+  { path: 'nueva-votacion', component: NuevaVotacionComponent },
+  { path: 'lista-votaciones', component: ListaVotacionesComponent },
+  { path: 'detalle-votacion/:id', component: VotacionesComponent },
+  { path: '',   redirectTo: '/', pathMatch: 'full' }//,
+  //{ path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    VotacionesComponent
+    VotacionesComponent,
+    ConfigComponent,
+    MessagesComponent,
+    UploaderComponent,
+    NuevaVotacionComponent,
+    ListaVotacionesComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [VotacionesService],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

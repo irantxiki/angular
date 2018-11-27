@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // Votaciones Class
 import { Votaciones } from './votaciones.model';
@@ -14,9 +15,9 @@ export class VotacionesComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() votacionInput: Votaciones;
 
-  //votaciones: Votaciones[];
+  votaciones: Votaciones[];
   
-  constructor(private router: Router, private votacionesService: VotacionesService) {
+  constructor( private route: ActivatedRoute, private router: Router, private votacionesService: VotacionesService) {
 
   }
 
@@ -29,8 +30,13 @@ export class VotacionesComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*this.votacionesService.getVotaciones().subscribe(
+    /*/this.votacionesService.getVotaciones().subscribe(
     data => this.votaciones = data 
+    );*/
+
+    /*this.votacion$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.votacionesService.getVotacion(params.get('id')))
     );*/
   }
 

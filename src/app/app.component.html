@@ -4,25 +4,16 @@
 </nav>
 
 <div class="container p-4">
-  <div class="row">
-    <!-- FORM -->
-    <div class="col-md-8 offset-md-2">
-      <div class="card">
-        <form class="card-body">
-          <h3 class="card-title">Añadir votación</h3>
-          <label for="titulo">Titulo</label>
-          <input type="text" name="titulo" #newTitulo class="form-control" autofocus>
+  
+  <!--<app-nueva-votacion></app-nueva-votacion>-->
 
-          <label for="enlace">Enlace</label>
-          <input type="text" name="enlace" #newEnlace class="form-control">
+  <h1>Angular Router</h1>
+  <nav>
+    <!--<app-uploader></app-uploader>-->
+    <a routerLink="/nueva-votacion" routerLinkActive="active">Nueva votación</a>
+    <a routerLink="/lista-votaciones" routerLinkActive="active">Listado votaciones</a>
+  </nav>
+  <router-outlet></router-outlet>
 
-          <button (click)="addVotacion(newTitulo, newEnlace)" class="btn btn-primary btn-block mt-4">
-            Guardar Votación
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- Votaciones -->
-  <app-votaciones *ngFor="let votacionInput of votacionesOrdenadas()" [votacionInput]="votacionInput"></app-votaciones>
 </div>
+

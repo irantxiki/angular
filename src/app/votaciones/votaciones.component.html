@@ -1,9 +1,12 @@
 <div class="col-md-8 offset-md-2 mt-2">
   <div class="card text-center">
     <div class="card-header">
-      <a href="{{ votacionInput.enlace }}" target="_blank" class="card-title">
+      <a [routerLink]="['/detalle-votacion', votacion.id]">
         {{votacionInput.titulo}}
       </a>
+     <!-- <a href="{{ votacionInput.enlace }}" target="_blank" class="card-title">
+        {{votacionInput.titulo}}
+      </a>-->
       <span class="text-muted">{{votacionInput.formatDomain()}}</span>
 
     </div>

@@ -15,19 +15,19 @@ export class VotacionesService {
 
   constructor(private http:HttpClient) {}
 
-  //private userUrl = 'http://localhost:8080/user-portal/user';
-  private linkUrl = '/api';
+  //Esto está configurado en el fichero proxy.config.json
+  private baseUrl = '/votaciones';
   
   public getVotaciones() {
-    return this.http.get<Votaciones[]>(this.linkUrl);
+    return this.http.get<Votaciones[]>(this.baseUrl);
   }
 
   public eliminarVotacion(votacion) {
-    return this.http.delete(this.linkUrl + "/"+ votacion.id);
+    return this.http.delete(this.baseUrl + votacion.id);
   }
 
   public crearVotacion(votacion) {
-    return this.http.post<Votaciones>(this.linkUrl, votacion);
+    return this.http.post<Votaciones>(this.baseUrl, votacion);
   }
 
 }

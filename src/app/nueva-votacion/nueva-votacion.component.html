@@ -1,0 +1,41 @@
+
+<div class="row">
+  <!-- FORM -->
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <form [formGroup]="nuevaVotacionForm" (ngSubmit)="onSubmit()" class="card-body">
+        <h3 class="card-title">Añadir votación</h3>
+        <label for="titulo">Titulo</label>
+        <input type="text" formControlName="titulo" id="titulo" #newTitulo class="form-control" 
+                autofocus required  [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }">
+
+        <div *ngIf="submitted && f.titulo.errors"
+              class="alert alert-danger">
+
+            <div *ngIf="f.titulo.errors.required">
+              El titulo es obligatorio
+            </div>
+            <div *ngIf="f.titulo.errors.minlength">
+              El título tiene que tener al menos 4 carácteres
+            </div>
+            
+            <!--<div *ngIf="titulo.errors.forbiddenName">>-->
+              <!--  Name cannot be Bob.-->
+              <!--</div>-->
+        </div>
+
+        <label for="enlace">Enlace</label>
+        <input type="text" formControlName="enlace" id="enlace" #newEnlace class="form-control">
+
+        <!--<button (click)="addVotacion(newTitulo, newEnlace)" class="btn btn-primary btn-block mt-4">
+          Guardar Votación
+        </button>-->
+
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary btn-block mt-4">Register</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
