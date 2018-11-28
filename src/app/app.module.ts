@@ -13,6 +13,7 @@ import { VotacionesService} from './votaciones/votaciones.service';
 import { HttpClientModule } from "@angular/common/http";
 import { NuevaVotacionComponent } from './nueva-votacion/nueva-votacion.component';
 import { ListaVotacionesComponent } from './lista-votaciones/lista-votaciones.component';
+import { MessageService } from './message.service';
 
 const appRoutes: Routes = [
   { path: 'nueva-votacion', component: NuevaVotacionComponent },
@@ -43,7 +44,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [VotacionesService],
+  providers: [VotacionesService, MessageService],
   bootstrap: [AppComponent]
 })
 

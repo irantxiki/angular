@@ -1,10 +1,12 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 // Votaciones Class
 import { Votaciones } from './votaciones.model';
 import { VotacionesService } from './votaciones.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-votaciones',
@@ -17,7 +19,9 @@ export class VotacionesComponent implements OnInit {
 
   votaciones: Votaciones[];
   
-  constructor( private route: ActivatedRoute, private router: Router, private votacionesService: VotacionesService) {
+  constructor( private route: ActivatedRoute, private router: Router, 
+              private votacionesService: VotacionesService, private messageService: MessageService
+              ) {
 
   }
 
@@ -30,13 +34,12 @@ export class VotacionesComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*/this.votacionesService.getVotaciones().subscribe(
-    data => this.votaciones = data 
-    );*/
-
-    /*this.votacion$ = this.route.paramMap.pipe(
+    /*
+    this.votaciones$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.votacionesService.getVotacion(params.get('id')))
+        this.votacionesService.getVotacion(params.get('id')).subscribe(
+          (data : Votaciones)=> { this.votaciones = data }
+          );
     );*/
   }
 
