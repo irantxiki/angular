@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Link } from './link/link.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -8,26 +9,6 @@ import { Link } from './link/link.model';
 })
 export class AppComponent {
 
-  links: Link[];
-
-  constructor() {
-    this.links = [
-      new Link('angular', 'http://angular.io', 10),
-      new Link('google', 'http://google.com', 100),
-      new Link('youtube', 'http://youtube.com', 1000)
-    ];
+  constructor(private router: Router) {
   }
-
-  addLink(title: HTMLInputElement, link: HTMLInputElement): boolean {
-    console.log('Titulo: ' + title.value);
-    this.links.push(new Link(title.value, link.value));
-    title.value = '';
-    link.value = '';
-    return false;
-  }
-
-  sortedLinks() {
-    return this.links.sort((a: Link, b: Link) => b.votes - a.votes);
-  }
-
 }
