@@ -1,6 +1,7 @@
 {
   "/votaciones/*": {
-    "target": "http://localhost:8080/votaciones/",
-    "secure": false
+    "target": "http://localhost:8080",
+    "secure": false,
+    "logLevel":"debug"
   }
 }
