@@ -1,19 +1,16 @@
-<!-- NAVIGATION -->
-<nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Votaciones</a>
-</nav>
+<div id="container">
+    <app-sidebar></app-sidebar>
 
-<div class="container p-4">
-  
-  <!--<app-nueva-votacion></app-nueva-votacion>-->
-  <!-- prueba otra vez-->
-  <h1>Angular Router</h1>
-  <nav>
-    <!--<app-uploader></app-uploader>-->
-    <a routerLink="/nueva-votacion" routerLinkActive="active">Nueva votación</a>
-    <a routerLink="/lista-votaciones" routerLinkActive="active">Listado votaciones</a>
-  </nav>
-  <router-outlet></router-outlet>
-
-</div>
+    <div id="content">
+      <nav class="navbar navbar-dark bg-primary">
+          <a class="navbar-brand" href="#">Votaciones</a>
+      </nav>
+      <h1>Angular Demo</h1>
+      <nav>
+        <a routerLink="/nueva-votacion" routerLinkActive="active">Nueva votación</a>
+        <a routerLink="/lista-votaciones" routerLinkActive="active">Listado votaciones</a>
+      </nav>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 

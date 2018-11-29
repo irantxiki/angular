@@ -4,7 +4,7 @@ export class Votaciones {
     enlace: string;
     votos: number;
 
-    constructor(id: number, title: string, link: string, votes?: number) {
+    constructor(title: string, link: string, votes?: number, id?: number) {
         this.id = id;
         this.titulo = title;
         this.enlace = link;

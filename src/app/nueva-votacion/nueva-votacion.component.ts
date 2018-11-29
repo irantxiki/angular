@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Votaciones } from '../votaciones/votaciones.model';
 import { VotacionesService } from '../votaciones/votaciones.service';
-import { VotacionesComponent } from '../votaciones/votaciones.component';
 
 @Component({
   selector: 'app-nueva-votacion',
@@ -15,7 +14,8 @@ export class NuevaVotacionComponent implements OnInit {
   nuevaVotacionForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private votacionesService: VotacionesService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, 
+              private votacionesService: VotacionesService) { }
 
   ngOnInit(): void {
     this.nuevaVotacionForm = this.formBuilder.group({

@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { VotacionesComponent } from './votaciones/votaciones.component';
-import { ConfigComponent } from './config/config.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UploaderComponent } from './uploader/uploader.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +13,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { NuevaVotacionComponent } from './nueva-votacion/nueva-votacion.component';
 import { ListaVotacionesComponent } from './lista-votaciones/lista-votaciones.component';
 import { MessageService } from './message.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const appRoutes: Routes = [
   { path: 'nueva-votacion', component: NuevaVotacionComponent },
@@ -27,11 +27,11 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     VotacionesComponent,
-    ConfigComponent,
     MessagesComponent,
     UploaderComponent,
     NuevaVotacionComponent,
-    ListaVotacionesComponent
+    ListaVotacionesComponent,
+    SidebarComponent
   ],
   imports: [
     RouterModule.forRoot(
