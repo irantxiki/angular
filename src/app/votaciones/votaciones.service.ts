@@ -20,7 +20,7 @@ export class VotacionesService {
   private baseUrl = '/votaciones';
   
   public getVotaciones() : Observable<Votaciones[]> {
-    return this.http.get<Votaciones[]>(this.baseUrl)
+    return this.http.get<Votaciones[]>(this.baseUrl + '/votaciones')
     .pipe(
       catchError(this.handleError('getVotaciones', []))
     );
@@ -28,11 +28,11 @@ export class VotacionesService {
 
 
   public getVotacion(id): Observable<Votaciones> {
-    return this.http.get<Votaciones>(this.baseUrl + id);
+    return this.http.get<Votaciones>(this.baseUrl + '/votaciones' + id);
   }
 
   public eliminarVotacion(votacion) {
-    return this.http.delete(this.baseUrl + votacion.id);
+    return this.http.delete(this.baseUrl + '/votaciones' + votacion.id);
   }
 
   public crearVotacion(votacion) {
