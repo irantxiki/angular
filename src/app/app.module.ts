@@ -16,7 +16,8 @@ import { MessageService } from './message.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent, pathMatch: 'full' },
+  { path: '', redirectTo: '/votaciones', pathMatch: 'full' },
+  { path: 'votaciones', component: AppComponent },
   { path: 'nueva-votacion', component: NuevaVotacionComponent },
   { path: 'lista-votaciones', component: ListaVotacionesComponent },
   { path: 'detalle-votacion/:id', component: VotacionesComponent }

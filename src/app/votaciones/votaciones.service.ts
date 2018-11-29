@@ -36,7 +36,10 @@ export class VotacionesService {
   }
 
   public crearVotacion(votacion) {
-    return this.http.post<Votaciones>(this.baseUrl + '/votaciones', votacion);
+    return this.http.post<Votaciones>(this.baseUrl + '/votaciones', votacion)
+    .pipe(
+      catchError(this.handleError('crearVotacion', []))
+    );
   }
 
   /**
