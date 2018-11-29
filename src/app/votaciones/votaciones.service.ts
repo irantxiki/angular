@@ -22,9 +22,10 @@ export class VotacionesService {
   public getVotaciones() : Observable<Votaciones[]> {
     return this.http.get<Votaciones[]>(this.baseUrl)
     .pipe(
-      catchError(this.handleError('getHeroes', []))
+      catchError(this.handleError('getVotaciones', []))
     );
   }
+
 
   public getVotacion(id): Observable<Votaciones> {
     return this.http.get<Votaciones>(this.baseUrl + id);
@@ -35,7 +36,7 @@ export class VotacionesService {
   }
 
   public crearVotacion(votacion) {
-    return this.http.post<Votaciones>(this.baseUrl, votacion);
+    return this.http.post<Votaciones>(this.baseUrl + '/votaciones', votacion);
   }
 
   /**
