@@ -16,10 +16,10 @@ import { MessageService } from './message.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 const appRoutes: Routes = [
+  { path: '', component: AppComponent, pathMatch: 'full' },
   { path: 'nueva-votacion', component: NuevaVotacionComponent },
   { path: 'lista-votaciones', component: ListaVotacionesComponent },
-  { path: 'detalle-votacion/:id', component: VotacionesComponent },
-  { path: '',   redirectTo: '/', pathMatch: 'full' }//,
+  { path: 'detalle-votacion/:id', component: VotacionesComponent }
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
