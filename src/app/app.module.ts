@@ -1,49 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { VotacionesComponent } from './votaciones/votaciones.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UploaderComponent } from './uploader/uploader.component';
-import { AppRoutingModule } from './app-routing.module';
+import { routing } from './app-routing.module';
 import { VotacionesService} from './votaciones/votaciones.service';
 import { HttpClientModule } from "@angular/common/http";
+import { InicioVotacionesComponent } from './inicio-votaciones.component';
 import { NuevaVotacionComponent } from './nueva-votacion/nueva-votacion.component';
 import { ListaVotacionesComponent } from './lista-votaciones/lista-votaciones.component';
 import { MessageService } from './message.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
-const appRoutes: Routes = [
-  { path: '', redirectTo: '/votaciones', pathMatch: 'full' },
-  { path: 'votaciones', component: AppComponent },
-  { path: 'nueva-votacion', component: NuevaVotacionComponent },
-  { path: 'lista-votaciones', component: ListaVotacionesComponent },
-  { path: 'detalle-votacion/:id', component: VotacionesComponent }
-  //{ path: '**', component: PageNotFoundComponent }
-];
-
 @NgModule({
   declarations: [
     AppComponent,
-    VotacionesComponent,
     MessagesComponent,
     UploaderComponent,
+    InicioVotacionesComponent,
+    VotacionesComponent,
     NuevaVotacionComponent,
     ListaVotacionesComponent,
     SidebarComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    routing
   ],
   providers: [VotacionesService, MessageService],
   bootstrap: [AppComponent]
