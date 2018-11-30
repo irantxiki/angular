@@ -26,7 +26,6 @@ export class VotacionesService {
     );
   }
 
-
   public getVotacion(id): Observable<Votaciones> {
     return this.http.get<Votaciones>(this.baseUrl + '/votaciones' + id);
   }
@@ -36,7 +35,7 @@ export class VotacionesService {
   }
 
   public crearVotacion(votacion) {
-    return this.http.post<Votaciones>(this.baseUrl + '/votaciones', votacion)
+    return this.http.post<Votaciones>(this.baseUrl + '/saveVotacion', votacion)
     .pipe(
       catchError(this.handleError('crearVotacion', []))
     );
