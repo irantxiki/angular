@@ -5,7 +5,7 @@ import { Votaciones } from './votaciones.model';
 import { MessageService } from '../message.service';
 
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -34,9 +34,10 @@ export class VotacionesService {
     return this.http.delete(this.baseUrl + '/votaciones' + votacion.id);
   }
 
-  public crearVotacion(votacion) {
+  public crearVotacion(votacion: Votaciones) {
     return this.http.post<Votaciones>(this.baseUrl + '/saveVotacion', votacion)
     .pipe(
+      tap(_ => this.log(votacion.enlace)),
       catchError(this.handleError('crearVotacion', []))
     );
   }
