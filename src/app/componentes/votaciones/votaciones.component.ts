@@ -19,7 +19,7 @@ export class VotacionesComponent implements OnInit {
 
   votaciones: Votaciones[];
 
-  constructor( private route: ActivatedRoute, private router: Router, 
+  constructor( private route: ActivatedRoute, private router: Router,
               private votacionesService: VotacionesService, private messageService: MessageService
               ) {
 
@@ -43,6 +43,6 @@ export class VotacionesComponent implements OnInit {
     );*/
   }
 
-  
+
 
 }

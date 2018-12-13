@@ -10,7 +10,7 @@ import { VotacionesService } from '../../servicios/votaciones.service';
   styleUrls: ['./lista-votaciones.component.css']
 })
 export class ListaVotacionesComponent implements OnInit {
-  
+
   votaciones: Votaciones[];
 
   constructor(private router: Router, private votacionesService: VotacionesService) {
@@ -27,7 +27,7 @@ export class ListaVotacionesComponent implements OnInit {
 
   ngOnInit() {
     /*this.votacionesService.getVotaciones().subscribe(
-    data => this.votaciones = data 
+    data => this.votaciones = data
     );*/
   }
 }
