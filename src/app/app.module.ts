@@ -4,8 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
-import { MessagesComponent } from './componentes/messages/messages.component';
-import { UploaderComponent } from './componentes/uploader/uploader.component';
+import { MessagesComponent } from './componentes/util/messages/messages.component';
+import { UploaderComponent } from './componentes/util/uploader/uploader.component';
 import { routing } from './app-routing.module';
 import { VotacionesService} from './servicios/votaciones.service';
 import { HttpClientModule } from '@angular/common/http';
