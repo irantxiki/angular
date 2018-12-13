@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Votaciones } from './votaciones.model';
-import { MessageService } from '../message.service';
+import { Votaciones } from '../modelo/votaciones.model';
+import { MessageService } from './message.service';
 
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -18,7 +18,7 @@ export class VotacionesService {
 
   //Esto está configurado en el fichero proxy.config.json
   private baseUrl = '/votaciones';
-  
+
   public getVotaciones() : Observable<Votaciones[]> {
     return this.http.get<Votaciones[]>(this.baseUrl + '/votaciones')
     .pipe(

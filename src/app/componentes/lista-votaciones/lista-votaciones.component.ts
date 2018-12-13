@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Votaciones } from '../votaciones/votaciones.model';
-import { VotacionesService } from '../votaciones/votaciones.service';
+import { Votaciones } from '../../modelo/votaciones.model';
+import { VotacionesService } from '../../servicios/votaciones.service';
 
 @Component({
   selector: 'app-lista-votaciones',

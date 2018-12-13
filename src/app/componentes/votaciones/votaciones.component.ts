@@ -4,9 +4,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 // Votaciones Class
-import { Votaciones } from './votaciones.model';
-import { VotacionesService } from './votaciones.service';
-import { MessageService } from '../message.service';
+import { Votaciones } from '../../modelo/votaciones.model';
+import { VotacionesService } from '../../servicios/votaciones.service';
+import { MessageService } from '../../servicios/message.service';
 
 @Component({
   selector: 'app-votaciones',
@@ -18,7 +18,7 @@ export class VotacionesComponent implements OnInit {
   @Input() votacionInput: Votaciones;
 
   votaciones: Votaciones[];
-  
+
   constructor( private route: ActivatedRoute, private router: Router, 
               private votacionesService: VotacionesService, private messageService: MessageService
               ) {

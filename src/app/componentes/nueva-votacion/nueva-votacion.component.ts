@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Votaciones } from '../votaciones/votaciones.model';
-import { VotacionesService } from '../votaciones/votaciones.service';
+import { Votaciones } from '../../modelo/votaciones.model';
+import { VotacionesService } from '../../servicios/votaciones.service';
 
 @Component({
   selector: 'app-nueva-votacion',
