@@ -1,0 +1,18 @@
+<div id="container">
+    <app-sidebar></app-sidebar>
+    <!-- navegacion 2 -->
+    <div id="content">
+      <nav class="navbar navbar-dark bg-primary">
+          <a class="navbar-brand" href="#">Inicio</a>
+      </nav>
+      <h3>Votaciones</h3>
+      <div class="container m-5">
+        <a class="btn btn-info" routerLink="/votaciones/nueva-votacion" routerLinkActive="active">Nueva votación</a>
+        <a class="btn btn-info" routerLink="/votaciones/lista-votaciones" routerLinkActive="active">Listado votaciones</a>
+      </div>
+
+      <!-- Necesario para el rutado Iran -->
+     <router-outlet></router-outlet>
+     
+    </div>
+  </div>

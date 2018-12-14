@@ -31,7 +31,7 @@ export class ListaVotacionesComponent implements OnInit {
 
   ngOnInit() {
     /*this.votacionesService.getVotaciones().subscribe(
-    data => this.votaciones = data 
+    data => this.votaciones = data
     );*/
     this.votacionesService.getVotaciones()
     .subscribe(votaciones => {
