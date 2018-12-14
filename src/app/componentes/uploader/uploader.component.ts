@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UploaderService } from './uploader.service';
+import { UploaderService } from '../../servicios/uploader.service';
 
 @Component({
   selector: 'app-uploader',

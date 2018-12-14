@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     { path: 'lista-votaciones', component: ListaVotacionesComponent },
     { path: 'detalle-votacion/:id', component: VotacionesComponent }
     ]}
-  //{ path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 
