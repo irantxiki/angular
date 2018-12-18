@@ -1,14 +1,24 @@
 <nav>
-    <ul>
-      <li>
-        <a routerLink="">
-          <i class="material-icons">search</i>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="">
+          <i class="fa fa-search" aria-hidden="true"></i>
         </a>
       </li>
-      <li>
-          <a routerLink="">
-            <i class="material-icons">message</i>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="">
+            <i class="fa fa-comment" aria-hidden="true"></i>
           </a>
-        </li>
+      </li>
+      <li class="nav-item form-control btn btn-outline-secondary">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{translate.currentLang}}</a>      
+          <div class="dropdown-menu nav-item">
+              <a class="dropdown-item nav-link" *ngFor="let lang of translate.getLangs()" (click)="translate.use(lang)">{{ lang }}</a>
+          </div>
+
+          <!-- <select class="form-control" #langSelect (change)="translate.use(langSelect.value)">
+              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+          </select> -->
+      </li>
     </ul>
   </nav>
