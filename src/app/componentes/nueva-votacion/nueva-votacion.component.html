@@ -7,7 +7,7 @@
         <h3 class="card-title">Añadir votación</h3>
         <label for="titulo">Titulo</label>
         <input type="text" formControlName="titulo" id="titulo" #newTitulo class="form-control" 
-                autofocus required  [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }">
+                autofocus required  [class.is-invalid]="submitted && f.titulo.errors">
 
         <div *ngIf="submitted && f.titulo.errors"
               class="alert alert-danger">

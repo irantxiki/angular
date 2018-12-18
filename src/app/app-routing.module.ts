@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { InicioVotacionesComponent } from './inicio-votaciones.component';
-import { VotacionesComponent } from './votaciones/votaciones.component';
-import { ListaVotacionesComponent } from './lista-votaciones/lista-votaciones.component';
-import { NuevaVotacionComponent } from './nueva-votacion/nueva-votacion.component';
+import { InicioVotacionesComponent } from './componentes/inicio-votaciones/inicio-votaciones.component';
+import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
+import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
+import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votacion.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/votaciones', pathMatch: 'full' },
@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     { path: 'lista-votaciones', component: ListaVotacionesComponent },
     { path: 'detalle-votacion/:id', component: VotacionesComponent }
     ]}
-  //{ path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 
