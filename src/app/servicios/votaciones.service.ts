@@ -13,6 +13,8 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class VotacionesService {
 
+  const aasdf = 'a';
+
   constructor(private http:HttpClient, private messageService: MessageService
     ) {}
 
