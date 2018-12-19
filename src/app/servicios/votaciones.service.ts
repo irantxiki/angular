@@ -12,7 +12,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class VotacionesService {
-  
+
   constructor(private http:HttpClient, private messageService: MessageService
     ) {}
 
