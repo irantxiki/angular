@@ -41,3 +41,4 @@ package.json
 package-lock.json
 .gitignore
 tsconfig.json
+package.json
