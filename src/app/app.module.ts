@@ -8,12 +8,20 @@ import { MessagesComponent } from './componentes/util/messages/messages.componen
 import { UploaderComponent } from './componentes/util/uploader/uploader.component';
 import { routing } from './app-routing.module';
 import { VotacionesService} from './servicios/votaciones.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { InicioVotacionesComponent } from './componentes/inicio-votaciones/inicio-votaciones.component';
 import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votacion.component';
 import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
 import { MessageService } from './servicios/message.service';
 import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component';
+
+// internacionalización
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 @NgModule({
   declarations: [
@@ -31,7 +39,14 @@ import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    routing
+    routing,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [VotacionesService, MessageService],
   bootstrap: [AppComponent]

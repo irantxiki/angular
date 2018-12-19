@@ -4,13 +4,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 
+
 @Component({
   selector: 'app-nueva-votacion',
   templateUrl: './nueva-votacion.component.html',
   styleUrls: ['./nueva-votacion.component.css']
 })
 export class NuevaVotacionComponent implements OnInit {
- 
+
+  loading: boolean;
   nuevaVotacionForm: FormGroup;
   submitted = false;
 
@@ -55,8 +57,10 @@ export class NuevaVotacionComponent implements OnInit {
   }
 
   saveVotacion(votacion : Votaciones): void {
+    this.loading = true;
     this.votacionesService.crearVotacion(votacion)
         .subscribe( data => {
+          this.loading = false;
           alert("User created successfully.");
         });
 
