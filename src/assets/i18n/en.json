@@ -1,0 +1,17 @@
+{
+    "TITULO_APP": "Voting {{value}}",
+    "NUEVA": "New Vote",
+    "LISTADO": "Link list",
+    "SEARCH": "Search",
+    "MENSAGE": "Message",
+    "MENSAGES": "Messages",
+    "ADD_VOTACION" : "Add Vote",
+    "TITULO": "Tittle",
+    "T_OBLIGATORIO": "Tittle is required",
+    "T_FORMATO": "The title must have at least 4 characters",
+    "REGISTRAR": "Register",
+    "LIMPIAR": "Clear",
+    "SUBIR": "Upload File",
+    "SELECT_FICHERO": "Select file",
+    "ENLACE": "Link"
+}

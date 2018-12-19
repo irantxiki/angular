@@ -1,0 +1,17 @@
+{
+    "TITULO_APP": "Votaciones {{value}}",
+    "NUEVA": "Nueva votación",
+    "LISTADO": "Listado enlaces",
+    "SEARCH": "Buscar",
+    "MENSAGE": "Mensaje",
+    "MENSAGES": "Mensajes",
+    "ADD_VOTACION" : "Añadir votación",
+    "TITULO": "Título",
+    "T_OBLIGATORIO": "El titulo es obligatorio",
+    "T_FORMATO": "El título tiene que tener al menos 4 carácteres",
+    "REGISTRAR": "Registrar",
+    "LIMPIAR": "Limpiar",
+    "SUBIR": "Subir Fichero",
+    "SELECT_FICHERO": "Seleccionar fichero",
+    "ENLACE": "Enlace"
+}

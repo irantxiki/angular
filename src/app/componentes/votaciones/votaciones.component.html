@@ -1,18 +1,20 @@
 <div class="col-md-8 offset-md-2 mt-2">
   <div class="card text-center">
     <div class="card-header">
+      <span class="text-muted">
+          {{votacionInput.titulo}}
+      </span>
       <a routerLink="/detalle-votacion/{{votacionInput.id}}">
-        {{votacionInput.titulo}}
+        <i class="fa fa-plus" aria-hidden="true"></i>...
+      </a><br>
+      <a href="//{{ votacionInput.enlace }}" target="_blank" class="card-title">
+        {{votacionInput.enlace}}
       </a>
-      <!--<a href="{{ votacionInput.enlace }}" target="_blank" class="card-title">
-        {{votacionInput.titulo}}
-      </a>-->
-      <span class="text-muted">{{votacionInput.formatDomain()}}</span>
 
     </div>
     <div class="card-body">
       Puntos:
-      <h3 class="display-4">{{votacionInput.votos}}</h3>
+      <h3 class="display-4">{{votacionInput.numero}}</h3>
     </div>
     <div class="card-footer">
       <button (click)="votoPositivo()" class="btn btn-primary">

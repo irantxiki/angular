@@ -3,17 +3,25 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { VotacionesComponent } from './votaciones/votaciones.component';
-import { MessagesComponent } from './messages/messages.component';
-import { UploaderComponent } from './uploader/uploader.component';
+import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
+import { MessagesComponent } from './componentes/util/messages/messages.component';
+import { UploaderComponent } from './componentes/util/uploader/uploader.component';
 import { routing } from './app-routing.module';
-import { VotacionesService} from './votaciones/votaciones.service';
-import { HttpClientModule } from "@angular/common/http";
-import { InicioVotacionesComponent } from './inicio-votaciones.component';
-import { NuevaVotacionComponent } from './nueva-votacion/nueva-votacion.component';
-import { ListaVotacionesComponent } from './lista-votaciones/lista-votaciones.component';
-import { MessageService } from './message.service';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { VotacionesService} from './servicios/votaciones.service';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { InicioVotacionesComponent } from './componentes/inicio-votaciones/inicio-votaciones.component';
+import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votacion.component';
+import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
+import { MessageService } from './servicios/message.service';
+import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component';
+
+// internacionalización
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 @NgModule({
   declarations: [
@@ -31,7 +39,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    routing
+    routing,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [VotacionesService, MessageService],
   bootstrap: [AppComponent]

@@ -4,8 +4,8 @@
   <div class="col-md-8 offset-md-2">
     <div class="card">
       <form [formGroup]="nuevaVotacionForm" (ngSubmit)="onSubmit()" class="card-body">
-        <h3 class="card-title">Añadir votación</h3>
-        <label for="titulo">Titulo</label>
+        <h3 class="card-title">{{ 'ADD_VOTACION'| translate }}</h3>
+        <label for="titulo">{{ 'TITULO'| translate }}</label>
         <input type="text" formControlName="titulo" id="titulo" #newTitulo class="form-control" 
                 autofocus required  [class.is-invalid]="submitted && f.titulo.errors">
 
@@ -13,10 +13,10 @@
               class="alert alert-danger">
 
             <div *ngIf="f.titulo.errors.required">
-              El titulo es obligatorio
+              {{'T_OBLIGATORIO' | translate}}
             </div>
             <div *ngIf="f.titulo.errors.minlength">
-              El título tiene que tener al menos 4 carácteres
+              {{'T_FORMATO' | translate}}
             </div>
             
             <!--<div *ngIf="titulo.errors.forbiddenName">>-->
@@ -24,7 +24,7 @@
               <!--</div>-->
         </div>
 
-        <label for="enlace">Enlace</label>
+        <label for="enlace">{{'ENLACE' | translate}}</label>
         <input type="text" formControlName="enlace" id="enlace" #newEnlace class="form-control">
 
         <!--<button (click)="addVotacion(newTitulo, newEnlace)" class="btn btn-primary btn-block mt-4">
@@ -32,7 +32,7 @@
         </button>-->
 
         <div class="form-group">
-          <button [disabled]="loading" class="btn btn-primary btn-block mt-4">Register</button>
+          <button [disabled]="loading" class="btn btn-primary btn-block mt-4">{{'REGISTRAR' | translate}}</button>
         </div>
 
         <app-messages></app-messages>
