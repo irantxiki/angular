@@ -1,14 +1,10 @@
 <nav>
     <ul class="nav nav-tabs">
       <li class="nav-item form-control btn btn-outline-secondary">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{translate.currentLang}}</a>      
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="../../../assets/{{translate.currentLang}}.png" ></a>      
           <div class="dropdown-menu nav-item">
-              <a class="dropdown-item nav-link" *ngFor="let lang of translate.getLangs()" (click)="translate.use(lang)">{{ lang }}</a>
+              <a class="dropdown-item nav-link" *ngFor="let lang of translate.getLangs()" (click)="translate.use(lang)"><img src="../../../assets/{{lang}}.png" ></a>
           </div>
-
-          <!-- <select class="form-control" #langSelect (change)="translate.use(langSelect.value)">
-              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-          </select> -->
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="">
