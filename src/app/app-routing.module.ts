@@ -6,7 +6,7 @@ import { VotacionesComponent } from './componentes/votaciones/votaciones.compone
 import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
 import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votacion.component';
 
-const appRoutes: Routes = [
+const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/votaciones', pathMatch: 'full' },
   { path: 'votaciones', component: InicioVotacionesComponent ,
     children: [
@@ -18,5 +18,5 @@ const appRoutes: Routes = [
 ];
 
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(APP_ROUTES, { useHash : true });
 export class AppRoutingModule { }
