@@ -9,10 +9,22 @@ import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votac
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/votaciones', pathMatch: 'full' },
   { path: 'votaciones', component: InicioVotacionesComponent ,
+    data: {
+        breadcrumb: 'Inicio'
+    },
     children: [
-    { path: 'nueva-votacion', component: NuevaVotacionComponent },
-    { path: 'lista-votaciones', component: ListaVotacionesComponent },
-    { path: 'detalle-votacion/:id', component: VotacionesComponent }
+    { path: 'nueva-votacion', component: NuevaVotacionComponent,
+    data: {
+        breadcrumb: 'Nueva Votación'
+    }},
+    { path: 'lista-votaciones', component: ListaVotacionesComponent,
+    data: {
+        breadcrumb: 'Listado Votaciones'
+    }},
+    { path: 'detalle-votacion/:id', component: VotacionesComponent,
+    data: {
+        breadcrumb: 'Detalle Votación'
+    }}
     ]}
   // { path: '**', component: PageNotFoundComponent }
 ];

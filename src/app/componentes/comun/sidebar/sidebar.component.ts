@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,14 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor(public translate: TranslateService) {
-    translate.addLangs(['es', 'en']);
-    translate.setDefaultLang('es');
-
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/es|en/) ? browserLang : 'es');
-  }
+  constructor() { }
 
   ngOnInit() {
   }

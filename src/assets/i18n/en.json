@@ -1,17 +1,33 @@
 {
-    "TITULO_APP": "Voting {{value}}",
-    "NUEVA": "New Vote",
-    "LISTADO": "Link list",
+
+    "RECLAMACIONES": {
+        "RECLAMACIONES-MENU":"Claim Management",
+        "NUEVA": "New Claim",
+        "LISTADO": "Claim List",
+        "LISTADO-ADMIN": "Admin Claim List"
+    },
+    
+    "VOTACIONES": {
+        "VOTACIONES-MENU":"Votes Management",
+        "NUEVA": "New Vote",
+        "LISTADO": "Link list",
+        "ADD_VOTACION" : "Add Vote",
+        "TITULO": "Tittle",
+        "ENLACE": "Link",
+        "T_OBLIGATORIO": "Tittle is required",
+        "T_FORMATO": "The title must have at least 4 characters",
+        "PUNTOS": "Points",
+        "SUMAR": "Sum",
+        "QUITAR": "Deduct"
+    },
+
+    "VERSION_APP": "Voting {{value}}",
     "SEARCH": "Search",
     "MENSAGE": "Message",
     "MENSAGES": "Messages",
-    "ADD_VOTACION" : "Add Vote",
-    "TITULO": "Tittle",
-    "T_OBLIGATORIO": "Tittle is required",
-    "T_FORMATO": "The title must have at least 4 characters",
     "REGISTRAR": "Register",
     "LIMPIAR": "Clear",
     "SUBIR": "Upload File",
-    "SELECT_FICHERO": "Select file",
-    "ENLACE": "Link"
+    "SELECT_FICHERO": "Select file"
 }
+
