@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { createCustomElement } from '@angular/elements';
 
 import { AppComponent } from './app.component';
 import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
@@ -15,6 +17,7 @@ import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-v
 import { MessageService } from './servicios/message.service';
 import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component';
 import { NavbarComponent } from './componentes/comun/navbar/navbar.component';
+import { ConfirmEliminarComponent } from './componentes/comun/confirm-eliminar/confirm-eliminar.component';
 
 // internacionalización
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -23,8 +26,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 // migas
 import { BreadcrumbsModule } from 'ng6-breadcrumbs';
 
-
-import { ConfirmEliminarComponent } from './componentes/comun/confirm-eliminar/confirm-eliminar.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -40,8 +41,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     NuevaVotacionComponent,
     ListaVotacionesComponent,
     SidebarComponent,
-    ConfirmEliminarComponent,
-    NavbarComponent
+    NavbarComponent,
+    ConfirmEliminarComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +60,17 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     })
   ],
   providers: [VotacionesService, MessageService],
+  entryComponents: [ConfirmEliminarComponent],
   bootstrap: [AppComponent]
 })
 
+export class AppModule {
+  constructor(private injector: Injector) {
+    const confirmEliminar = createCustomElement(ConfirmEliminarComponent, {
+      injector
+    });
+    customElements.define('app-confirm-eliminar', confirmEliminar);
+  }
 
-export class AppModule { }
+  ngDoBootstrap() {}
+}
