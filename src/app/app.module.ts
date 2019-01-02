@@ -14,10 +14,15 @@ import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votac
 import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
 import { MessageService } from './servicios/message.service';
 import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component';
+import { NavbarComponent } from './componentes/comun/navbar/navbar.component';
 
 // internacionalización
-import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// migas
+import { BreadcrumbsModule } from 'ng6-breadcrumbs';
+
 
 import { ConfirmEliminarComponent } from './componentes/comun/confirm-eliminar/confirm-eliminar.component';
 
@@ -35,7 +40,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     NuevaVotacionComponent,
     ListaVotacionesComponent,
     SidebarComponent,
-    ConfirmEliminarComponent
+    ConfirmEliminarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +49,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     routing,
+    BreadcrumbsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

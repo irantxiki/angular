@@ -27,15 +27,15 @@
       </div>
     </div>
     <div class="card-body">
-      Puntos:
+        {{'VOTACIONES.PUNTOS' | translate}}:
       <h3 class="display-4">{{votacionInput.numero}}</h3>
     </div>
     <div class="card-footer">
-      <button (click)="votoPositivo()" class="btn btn-primary">
-        Sumar
+      <button (click)="votoPositivo()" class="btn btn-primary mr-2">
+          {{'VOTACIONES.SUMAR' | translate}}
       </button>
       <button (click)="votoNegativo()" class="btn btn-danger">
-        Quitar
+          {{'VOTACIONES.QUITAR' | translate}}
       </button>
     </div>
   </div>
