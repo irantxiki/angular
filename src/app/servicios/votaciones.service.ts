@@ -13,7 +13,7 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class VotacionesService {
 
-  constructor(private http:HttpClient, private messageService: MessageService
+  constructor(private http: HttpClient, private messageService: MessageService
     ) {}
 
   // Esto está configurado en el fichero proxy.config.json

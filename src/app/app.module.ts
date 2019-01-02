@@ -18,6 +18,7 @@ import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component'
 // internacionalización
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { ReclamacionesComponent } from './componentes/reclamaciones/reclamaciones.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     VotacionesComponent,
     NuevaVotacionComponent,
     ListaVotacionesComponent,
-    SidebarComponent
+    SidebarComponent,
+    ReclamacionesComponent
   ],
   imports: [
     BrowserModule,
