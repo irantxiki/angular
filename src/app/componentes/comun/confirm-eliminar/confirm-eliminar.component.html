@@ -1,5 +1,7 @@
-<!-- <ng-template #content let-modal> -->
-<div id="modalConfirmEliminar" class="modal fade" role="dialog">
+
+    <div id="modalConfirmEliminar" role="document" class="modal-dialog">
+        <div class="modal-content">
+<!-- <div id="modalConfirmEliminar" class="modal fade" role="dialog"> -->
   <div class="modal-header">
     <h4 class="modal-title" id="modalEliminarTitulo">Confirmación</h4>
     <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -7,7 +9,7 @@
     </button> -->
   </div>
   <div class="modal-body">
-    <p>¿Seguro que desea eliminar el voto?</p>
+    <p>{{mensaje}}</p>
   </div>
   <div class="modal-footer">
     <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
@@ -15,8 +17,8 @@
     <!-- <app-confirm-eliminar></app-confirm-eliminar> -->
     <button type="button" class="btn btn-default" focus-element="autofocus" data-dismiss="modal">Close</button>
     <!-- <button type="button" class="btn btn-default" focus-element="autofocus" data-dismiss="modal" (click)="modal.close('Close click')">Close</button> -->
-  </div>
-<!-- </ng-template> -->
+  </div> 
+</div>
 </div>
 
 <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>

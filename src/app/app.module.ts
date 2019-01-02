@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { createCustomElement } from '@angular/elements';
@@ -49,6 +50,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModalModule,
     routing,
     BreadcrumbsModule,
     TranslateModule.forRoot({
