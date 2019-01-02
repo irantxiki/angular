@@ -19,6 +19,8 @@ import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component'
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+import { ConfirmEliminarComponent } from './componentes/comun/confirm-eliminar/confirm-eliminar.component';
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -32,7 +34,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     VotacionesComponent,
     NuevaVotacionComponent,
     ListaVotacionesComponent,
-    SidebarComponent
+    SidebarComponent,
+    ConfirmEliminarComponent
   ],
   imports: [
     BrowserModule,
