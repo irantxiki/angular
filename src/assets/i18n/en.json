@@ -6,11 +6,12 @@
         "LISTADO": "Claim List",
         "LISTADO-ADMIN": "Admin Claim List"
     },
-    
+
     "VOTACIONES": {
         "VOTACIONES-MENU":"Votes Management",
         "NUEVA": "New Vote",
-        "LISTADO": "Link list",
+        "LISTADO": "Votes list",
+        "LISTADO-ADMIN": "Admin Votes list",
         "ADD_VOTACION" : "Add Vote",
         "TITULO": "Tittle",
         "ENLACE": "Link",

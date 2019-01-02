@@ -5,11 +5,12 @@
         "LISTADO": "Listado reclamaciones",
         "LISTADO-ADMIN": "Listado reclamaciones Administrador"
     },
-    
+
     "VOTACIONES": {
         "VOTACIONES-MENU":"Gestión Votaciones",
         "NUEVA": "Nueva votación",
-        "LISTADO": "Listado enlaces",
+        "LISTADO": "Listado votaciones",
+        "LISTADO-ADMIN": "Listado votaciones Administrador",
         "ADD_VOTACION" : "Añadir votación",
         "TITULO": "Título",
         "ENLACE": "Enlace",
