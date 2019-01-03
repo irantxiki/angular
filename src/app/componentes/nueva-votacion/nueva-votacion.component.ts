@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
+import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class NuevaVotacionComponent implements OnInit {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, 
-              private votacionesService: VotacionesService) { }
+              private votacionesService: VotacionesService,
+              private es: ElasticsearchService) { }
 
   ngOnInit(): void {
     this.nuevaVotacionForm = this.formBuilder.group({
@@ -54,13 +56,34 @@ export class NuevaVotacionComponent implements OnInit {
     return false;
   }
 
-  saveVotacion(votacion : Votaciones): void {
+  saveVotacion(votacion: Votaciones): void {
     this.loading = true;
+    
+    //Guardamos en Postgre
     this.votacionesService.crearVotacion(votacion)
         .subscribe( data => {
           this.loading = false;
           //alert("User created successfully.");
         });
+        
+    //Guardamos en Elasticsearch
+    this.es.addToIndex({
+      index: 'gkz_index',
+      type: 'votacion',
+      id: 5,
+      body: {
+        titulo: votacion.titulo,
+        enlace: votacion.enlace,
+        numero: votacion.numero,
+        published: new Date().toLocaleString()
+      }
+    }).then((result) => {
+      console.log(result);
+      alert('Document added, see log for more info');
+    }, error => {
+      alert('Something went wrong, see log for more info');
+      console.error(error);
+    });
 
   }
 

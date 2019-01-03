@@ -1,42 +1,42 @@
-<div class="col-md-8 offset-md-2 mt-2">
-  <div class="card text-center">
-    <div class="card-header">
-      <div class="row">
-          <div class="col-md-5 text-muted" id="titulo">
-              Título: {{votacionInput.titulo}}
-          </div>
-          <div class="col-md-5" id="enlace">
-              Enlace: <a href="//{{ votacionInput.enlace }}" target="_blank" class="card-title">
-                {{votacionInput.enlace}}
+  <div class="col-md-8 offset-md-2 mt-2" [ngClass]="{'animated bounce': votacionInput.animacion, 'animated fadeIn': !votacionInput.animacion}">
+    <div class="card text-center">
+      <div class="card-header">
+        <div class="row">
+            <div class="col-md-5 text-muted" id="titulo">
+                Título: {{votacionInput.titulo}}
+            </div>
+            <div class="col-md-5" id="enlace">
+                Enlace: <a href="//{{ votacionInput.enlace }}" target="_blank" class="card-title">
+                  {{votacionInput.enlace}}
+                </a>
+            </div>
+            <div class="col-md-1">
+              <a routerLink="/detalle-votacion/{{votacionInput.id}}">
+                <i class="fa fa-plus" aria-hidden="true"></i>...
               </a>
-          </div>
-          <div class="col-md-1">
-            <a routerLink="/detalle-votacion/{{votacionInput.id}}">
-              <i class="fa fa-plus" aria-hidden="true"></i>...
-            </a>
-          </div>
-          <div class="col-md-1" style="margin-left: -35px">
-              <!-- <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> -->
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modalConfirmEliminar">
-                  Eliminar 
-                </button>
-                <!-- <a href="modalConfirmEliminar" data-toggle="modal" data-target="modalConfirmEliminar"> 
-                  <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                </a> -->
-          </div>
+            </div>
+            <div class="col-md-1" style="margin-left: -35px">
+                <!-- <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> -->
+              <button type="button" class="btn btn-info" (click)="openEliminarModal('modalConfirmEliminar')">
+                Eliminar 
+              </button>
+                  <!-- <a href="modalConfirmEliminar" data-toggle="modal" data-target="modalConfirmEliminar"> 
+                    <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
+                  </a> -->
+            </div>
+        </div>
+      </div>
+      <div class="card-body">
+          {{'VOTACIONES.PUNTOS' | translate}}:
+        <h3 class="display-4">{{votacionInput.numero}}</h3>
+      </div>
+      <div class="card-footer">
+        <button (click)="voto(votacionInput.numero + 1)" class="btn btn-primary mr-2">
+            {{'VOTACIONES.SUMAR' | translate}}
+        </button>
+        <button (click)="voto(votacionInput.numero - 1)" class="btn btn-danger">
+            {{'VOTACIONES.QUITAR' | translate}}
+        </button>
       </div>
     </div>
-    <div class="card-body">
-        {{'VOTACIONES.PUNTOS' | translate}}:
-      <h3 class="display-4">{{votacionInput.numero}}</h3>
-    </div>
-    <div class="card-footer">
-      <button (click)="votoPositivo()" class="btn btn-primary mr-2">
-          {{'VOTACIONES.SUMAR' | translate}}
-      </button>
-      <button (click)="votoNegativo()" class="btn btn-danger">
-          {{'VOTACIONES.QUITAR' | translate}}
-      </button>
-    </div>
   </div>
-</div>

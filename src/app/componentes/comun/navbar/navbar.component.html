@@ -24,10 +24,10 @@
           {{ 'VOTACIONES.VOTACIONES-MENU' | translate }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/votaciones/nueva-votacion" routerLinkActive="active">{{ 'VOTACIONES.NUEVA' | translate }}</a>
-          <a class="dropdown-item" routerLink="/votaciones/lista-votaciones" routerLinkActive="active">{{ 'VOTACIONES.LISTADO' | translate }}</a>
+          <a class="dropdown-item" routerLink="/votaciones/nueva-votacion">{{ 'VOTACIONES.NUEVA' | translate }}</a>
+          <a class="dropdown-item" routerLink="/votaciones/lista-votaciones">{{ 'VOTACIONES.LISTADO' | translate }}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="" routerLinkActive="active">{{ 'VOTACIONES.LISTADO-ADMIN' | translate }}</a>
+          <a class="dropdown-item" routerLink="/votaciones/search-votaciones">{{ 'VOTACIONES.BUSCADOR' | translate }}</a>
         </div>
       </li>
       
@@ -37,9 +37,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/votaciones/reclamaciones']" routerLinkActive="active">{{ 'RECLAMACIONES.NUEVA' | translate }}</a>
-          <a class="dropdown-item" routerLink="" routerLinkActive="active">{{ 'RECLAMACIONES.LISTADO' | translate }}</a>
+          <a class="dropdown-item" routerLink="">{{ 'RECLAMACIONES.LISTADO' | translate }}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="" routerLinkActive="active">{{ 'RECLAMACIONES.LISTADO-ADMIN' | translate }}</a>
+          <a class="dropdown-item" routerLink="">{{ 'RECLAMACIONES.BUSCADOR' | translate }}</a>
         </div>
       </li>
     </ul>

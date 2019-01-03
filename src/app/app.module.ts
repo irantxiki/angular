@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { createCustomElement } from '@angular/elements';
 
 import { AppComponent } from './app.component';
 import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
@@ -15,6 +18,9 @@ import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-v
 import { MessageService } from './servicios/message.service';
 import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component';
 import { NavbarComponent } from './componentes/comun/navbar/navbar.component';
+import { ConfirmEliminarComponent } from './componentes/comun/confirm-eliminar/confirm-eliminar.component';
+
+import { SearchVotacionesComponent } from './componentes/search-votaciones/search-votaciones.component';
 
 // internacionalización
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -25,7 +31,6 @@ import { ReclamacionesComponent } from './componentes/reclamaciones/reclamacione
 import { BreadcrumbsModule } from 'ng6-breadcrumbs';
 import { ReclamacionesService } from './servicios/reclamaciones.service';
 
-//import { ConfirmEliminarComponent } from './componentes/comun/confirm-eliminar/confirm-eliminar.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -40,16 +45,19 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     VotacionesComponent,
     NuevaVotacionComponent,
     ListaVotacionesComponent,
+    SearchVotacionesComponent,
     SidebarComponent,
     ReclamacionesComponent,
-    //ConfirmEliminarComponent,
-    NavbarComponent
+    NavbarComponent,
+    ConfirmEliminarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    NgbModalModule,
+    NgbModule.forRoot(),
     routing,
     BreadcrumbsModule,
     TranslateModule.forRoot({
@@ -64,5 +72,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   bootstrap: [AppComponent]
 })
 
+export class AppModule {
 
-export class AppModule { }
+}

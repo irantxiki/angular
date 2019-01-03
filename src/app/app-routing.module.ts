@@ -5,7 +5,11 @@ import { InicioVotacionesComponent } from './componentes/inicio-votaciones/inici
 import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
 import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
 import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votacion.component';
+<<<<<<< HEAD
 import { ReclamacionesComponent } from './componentes/reclamaciones/reclamaciones.component';
+=======
+import { SearchVotacionesComponent } from './componentes/search-votaciones/search-votaciones.component';
+>>>>>>> 096eb00842ffb8699c381b8cf5bdab477606d6bd
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/votaciones', pathMatch: 'full' },
@@ -25,6 +29,10 @@ const APP_ROUTES: Routes = [
     { path: 'lista-votaciones', component: ListaVotacionesComponent,
     data: {
         breadcrumb: 'Listado Votaciones'
+    }},
+    { path: 'search-votaciones', component: SearchVotacionesComponent,
+    data: {
+        breadcrumb: 'Search Votaciones'
     }},
     { path: 'detalle-votacion/:id', component: VotacionesComponent,
     data: {

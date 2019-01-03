@@ -14,14 +14,14 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 })
 export class VotacionesService {
 
-  constructor(private http: HttpClient, private messageService: MessageService
+  constructor(private http:HttpClient, private messageService: MessageService
     ) {}
 
   // Esto está configurado en el fichero proxy.config.json
   private baseUrl = '/votacionesServ';
 
   public getVotaciones(): Observable<Votaciones[]> {
-    return this.http.get<Votaciones[]>( 'http://localhost:8080/votacionesServ/obtenerVotaciones')
+    return this.http.get<Votaciones[]>( this.baseUrl +  '/obtenerVotaciones')
     .pipe(
       catchError(this.handleError('getVotaciones', []))
     );
@@ -31,8 +31,8 @@ export class VotacionesService {
     return this.http.get<Votaciones>(this.baseUrl + '/votaciones' + id);
   }
 
-  public eliminarVotacion(votacion) {
-    return this.http.delete(this.baseUrl + '/votaciones' + votacion.id);
+  public eliminarVotacion(votacion: Votaciones) {
+    return this.http.delete(this.baseUrl + '/delete' + votacion.id);
   }
 
   public crearVotacion(votacion: Votaciones) {
@@ -41,6 +41,10 @@ export class VotacionesService {
       tap(_ => this.log(votacion.enlace)),
       catchError(this.handleError('crearVotacion', []))
     );
+  }
+
+  public actualizarVotacion(votacion: Votaciones) {
+    return this.http.post<Votaciones>(this.baseUrl + '/actualizar', votacion);
   }
 
   /**
