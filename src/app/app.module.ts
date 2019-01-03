@@ -69,6 +69,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     })
   ],
   providers: [VotacionesService, ReclamacionesService, MessageService],
+  entryComponents: [ConfirmEliminarComponent],
   bootstrap: [AppComponent]
 })
 
