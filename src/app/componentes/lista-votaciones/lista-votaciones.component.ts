@@ -15,9 +15,9 @@ export class ListaVotacionesComponent implements OnInit {
 
   constructor(private router: Router, private votacionesService: VotacionesService) {
     // this.votaciones = [
-    //   new Votaciones('angular', 'http://angular.io', 10, 1),
-    //   new Votaciones('google', 'http://google.com', 100, 2),
-    //   new Votaciones('youtube', 'http://youtube.com', 1000, 3)
+    // new Votaciones('angular', 'http://angular.io', 10, 1),
+    // new Votaciones('google', 'http://google.com', 100, 2),
+    // new Votaciones('youtube', 'http://youtube.com', 1000, 3)
     // ];
   }
 

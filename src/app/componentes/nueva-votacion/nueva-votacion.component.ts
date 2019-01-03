@@ -40,11 +40,9 @@ export class NuevaVotacionComponent implements OnInit {
     if (this.nuevaVotacionForm.invalid) {
       return;
     } else {
-      this.addVotacion(this.nuevaVotacionForm.controls['titulo'].value, 
+      this.addVotacion(this.nuevaVotacionForm.controls['titulo'].value,
       this.nuevaVotacionForm.controls['enlace'].value);
     }
-
-    alert('SUCCESS!! :-)')
   }
 
   addVotacion(titulo: string, enlace: string): boolean {
@@ -61,7 +59,7 @@ export class NuevaVotacionComponent implements OnInit {
     this.votacionesService.crearVotacion(votacion)
         .subscribe( data => {
           this.loading = false;
-          alert("User created successfully.");
+          //alert("User created successfully.");
         });
 
   }

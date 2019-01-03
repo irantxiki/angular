@@ -1,45 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Votaciones } from '../modelo/votaciones.model';
+import { HttpClient, HttpEvent, HttpRequest, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
-
+import { Reclamacion } from '../modelo/reclamacion.model';
+import { Votaciones } from '../modelo/votaciones.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VotacionesService {
+export class ReclamacionesService {
 
-  constructor(private http: HttpClient, private messageService: MessageService
-    ) {}
-
-  // Esto está configurado en el fichero proxy.config.json
+  constructor(private http: HttpClient, private messageService: MessageService) { }
   private baseUrl = '/votacionesServ';
 
-  public getVotaciones(): Observable<Votaciones[]> {
-    return this.http.get<Votaciones[]>( 'http://localhost:8080/votacionesServ/obtenerVotaciones')
-    .pipe(
-      catchError(this.handleError('getVotaciones', []))
-    );
-  }
+  public pruebaFichero(fileToUpload: File): Observable<boolean> {
+    const endpoint = '/votacionesServ/pruebaFichero';
+    const formData: FormData = new FormData();
+    const httpHeaders: HttpHeaders = new HttpHeaders();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    httpHeaders.append('Content-Type', 'undefined');
 
-  public getVotacion(id): Observable<Votaciones> {
-    return this.http.get<Votaciones>(this.baseUrl + '/votaciones' + id);
-  }
-
-  public eliminarVotacion(votacion) {
-    return this.http.delete(this.baseUrl + '/votaciones' + votacion.id);
-  }
-
-  public crearVotacion(votacion: Votaciones) {
-    return this.http.post<Votaciones>(this.baseUrl + '/saveVotacion', votacion)
-    .pipe(
-      tap(_ => this.log(votacion.enlace)),
-      catchError(this.handleError('crearVotacion', []))
+    return this.http.post(endpoint, formData, { headers: httpHeaders }).pipe(
+      tap(() => this.log('holi')),
+      catchError(this.handleError<any>('post file'))
     );
   }
 

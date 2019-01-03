@@ -25,7 +25,7 @@
   </div>
   <div class="form-group">
     <label for="fichero">Fichero</label>
-    <input type="file" class="form-control-file">
+    <input type="file" class="form-control-file" (change)="selectFile($event)">
   </div>
   <button [disabled]="!formulario.valid" type="submit" class="btn btn-primary">Submit</button>
 </form>

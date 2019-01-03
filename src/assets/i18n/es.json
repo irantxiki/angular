@@ -1,17 +1,31 @@
 {
-    "TITULO_APP": "Votaciones {{value}}",
-    "NUEVA": "Nueva votación",
-    "LISTADO": "Listado enlaces",
+    "RECLAMACIONES": {
+        "RECLAMACIONES-MENU":"Gestión Reclamaciones",
+        "NUEVA": "Nueva reclamación",
+        "LISTADO": "Listado reclamaciones",
+        "LISTADO-ADMIN": "Listado reclamaciones Administrador"
+    },
+    
+    "VOTACIONES": {
+        "VOTACIONES-MENU":"Gestión Votaciones",
+        "NUEVA": "Nueva votación",
+        "LISTADO": "Listado enlaces",
+        "ADD_VOTACION" : "Añadir votación",
+        "TITULO": "Título",
+        "ENLACE": "Enlace",
+        "T_OBLIGATORIO": "El titulo es obligatorio",
+        "T_FORMATO": "El título tiene que tener al menos 4 carácteres",
+        "PUNTOS": "Puntos",
+        "SUMAR": "Sumar",
+        "QUITAR": "Restar"
+    },
+
+    "VERSION_APP": "Votaciones {{value}}",
     "SEARCH": "Buscar",
     "MENSAGE": "Mensaje",
     "MENSAGES": "Mensajes",
-    "ADD_VOTACION" : "Añadir votación",
-    "TITULO": "Título",
-    "T_OBLIGATORIO": "El titulo es obligatorio",
-    "T_FORMATO": "El título tiene que tener al menos 4 carácteres",
     "REGISTRAR": "Registrar",
     "LIMPIAR": "Limpiar",
     "SUBIR": "Subir Fichero",
-    "SELECT_FICHERO": "Seleccionar fichero",
-    "ENLACE": "Enlace"
+    "SELECT_FICHERO": "Seleccionar fichero"
 }

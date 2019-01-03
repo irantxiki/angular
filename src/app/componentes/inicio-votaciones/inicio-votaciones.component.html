@@ -1,18 +1,10 @@
+<app-navbar></app-navbar>
 <div id="container">
-    <app-sidebar></app-sidebar>
-    <!-- navegacion 2 -->
-    <div id="content">
-      <nav class="navbar navbar-dark bg-primary">
-          <a class="navbar-brand" href="#">Inicio</a>
-      </nav>
-      <h3 [translate]="'TITULO_APP'" [translateParams]="{value: 'Prueba'}"></h3>
-      <div>
-        <a class="btn btn-info" routerLink="/votaciones/nueva-votacion" routerLinkActive="active">{{ 'NUEVA' | translate }}</a>
-        <a class="btn btn-info" routerLink="/votaciones/lista-votaciones" routerLinkActive="active">{{ 'LISTADO' | translate }}</a>
-        <a class="btn btn-info" [routerLink]="['/votaciones/reclamaciones']" routerLinkActive="active">Reclamaciones</a>
-      </div>
 
+    <app-sidebar></app-sidebar>
+    <!-- navegacion  -->
+    <div id="content">
       <!-- Necesario para el rutado Iran -->
-     <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
