@@ -1,7 +1,7 @@
 
 
 <div style="margin-top:20px">
-  <input class="form-control" type="text" (keyup)="search($event)" placeholder="enter address" class="input">
+  <input type="text" (keyup)="search($event)" placeholder="enter address" class="input">
 
   <div *ngFor="let votacionSource of votacionesSources" style="margin-top:20px">
     <app-votaciones [votacionInput]='votacionSource._source'></app-votaciones>

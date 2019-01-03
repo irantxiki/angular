@@ -12,7 +12,7 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class VotacionesService {
-  
+
   constructor(private http:HttpClient, private messageService: MessageService
     ) {}
 
@@ -20,7 +20,7 @@ export class VotacionesService {
   private baseUrl = '/votacionesServ';
 
   public getVotaciones(): Observable<Votaciones[]> {
-    return this.http.get<Votaciones[]>( 'http://localhost:8080/votacionesServ/obtenerVotaciones')
+    return this.http.get<Votaciones[]>( this.baseUrl +  '/obtenerVotaciones')
     .pipe(
       catchError(this.handleError('getVotaciones', []))
     );
@@ -30,16 +30,20 @@ export class VotacionesService {
     return this.http.get<Votaciones>(this.baseUrl + '/votaciones' + id);
   }
 
-  public eliminarVotacion(votacion) {
-    return this.http.delete(this.baseUrl + '/votaciones' + votacion.id);
+  public eliminarVotacion(votacion: Votaciones) {
+    return this.http.delete(this.baseUrl + '/delete' + votacion.id);
   }
 
   public crearVotacion(votacion: Votaciones) {
-    return this.http.post<Votaciones>('http://localhost:8080/votacionesServ/saveVotacion', votacion)
+    return this.http.post<Votaciones>(this.baseUrl + '/saveVotacion', votacion)
     .pipe(
       tap(_ => this.log(votacion.enlace)),
       catchError(this.handleError('crearVotacion', []))
     );
+  }
+
+  public actualizarVotacion(votacion: Votaciones) {
+    return this.http.post<Votaciones>(this.baseUrl + '/actualizar', votacion);
   }
 
   /**
