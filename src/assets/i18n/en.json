@@ -4,14 +4,14 @@
         "RECLAMACIONES-MENU":"Claim Management",
         "NUEVA": "New Claim",
         "LISTADO": "Claim List",
-        "LISTADO-ADMIN": "Admin Claim List"
+        "BUSCADOR": "Claim Search"
     },
 
     "VOTACIONES": {
         "VOTACIONES-MENU":"Votes Management",
         "NUEVA": "New Vote",
         "LISTADO": "Votes list",
-        "LISTADO-ADMIN": "Admin Votes list",
+        "BUSCADOR": "Votes Search",
         "ADD_VOTACION" : "Add Vote",
         "TITULO": "Tittle",
         "ENLACE": "Link",

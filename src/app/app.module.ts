@@ -20,6 +20,8 @@ import { SidebarComponent } from './componentes/comun/sidebar/sidebar.component'
 import { NavbarComponent } from './componentes/comun/navbar/navbar.component';
 import { ConfirmEliminarComponent } from './componentes/comun/confirm-eliminar/confirm-eliminar.component';
 
+import { SearchVotacionesComponent } from './componentes/search-votaciones/search-votaciones.component';
+
 // internacionalización
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -41,6 +43,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     VotacionesComponent,
     NuevaVotacionComponent,
     ListaVotacionesComponent,
+    SearchVotacionesComponent,
     SidebarComponent,
     NavbarComponent,
     ConfirmEliminarComponent

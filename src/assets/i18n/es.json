@@ -3,14 +3,14 @@
         "RECLAMACIONES-MENU":"Gestión Reclamaciones",
         "NUEVA": "Nueva reclamación",
         "LISTADO": "Listado reclamaciones",
-        "LISTADO-ADMIN": "Listado reclamaciones Administrador"
+        "BUSCADOR": "Buscador reclamaciones"
     },
 
     "VOTACIONES": {
         "VOTACIONES-MENU":"Gestión Votaciones",
         "NUEVA": "Nueva votación",
         "LISTADO": "Listado votaciones",
-        "LISTADO-ADMIN": "Listado votaciones Administrador",
+        "BUSCADOR": "Buscador votaciones",
         "ADD_VOTACION" : "Añadir votación",
         "TITULO": "Título",
         "ENLACE": "Enlace",
