@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { MessageService } from '../../servicios/message.service';
 import { ConfirmEliminarComponent } from '../comun/confirm-eliminar/confirm-eliminar.component';
+
 
 @Component({
   selector: 'app-votaciones',
@@ -21,6 +22,8 @@ export class VotacionesComponent implements OnInit {
 
   votaciones: Votaciones[];
 
+  modalReference: NgbModalRef;
+
   constructor( private route: ActivatedRoute, private router: Router,
               private votacionesService: VotacionesService, private messageService: MessageService,
               private modalService: NgbModal
@@ -28,9 +31,17 @@ export class VotacionesComponent implements OnInit {
 
   }
 
-  openEliminarModal(id: string) {
+  openEliminarModal(id: any) {
+    alert('RR-->' + id);
     const modalRef = this.modalService.open(ConfirmEliminarComponent);
     modalRef.componentInstance.mensaje = '¿Está seguro de eliminar la votación?';
+    modalRef.componentInstance.idVotacion = this.votacionInput.id;
+
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   votoPositivo() {

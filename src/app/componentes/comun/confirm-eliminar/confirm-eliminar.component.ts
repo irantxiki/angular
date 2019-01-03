@@ -1,37 +1,31 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-
+import { NgbModal, ModalDismissReasons, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { VotacionesService } from '../../../servicios/votaciones.service';
 
 @Component({
   selector: 'app-confirm-eliminar',
-  templateUrl: './confirm-eliminar.component.html',
-  encapsulation: ViewEncapsulation.Native
+  templateUrl: './confirm-eliminar.component.html'
 })
 export class ConfirmEliminarComponent implements OnInit {
   @Input() mensaje = 'default label';
+  @Input() idVotacion;
+  closeResult: string;
 
-  constructor() { }
-  idEliminar = '0';
+  constructor(public activeModal: NgbActiveModal, private votacionesService: VotacionesService) { }
 
   ngOnInit() {
   }
 
   onOkEliminar() {
-  //   $('#modalConfirmEliminar').on('show.bs.modal', function(e) {
 
-  //     // //get data-id attribute of the clicked element
-  //     // var bookId = $(e.relatedTarget).data('book-id');
+    alert('Ahora se tiene que eliminar.' + this.idVotacion);
 
-  //     // //populate the textbox
-  //     // $(e.currentTarget).find('input[name="bookId"]').val(bookId);
-  //     const num = 1;
+    this.votacionesService.eliminarVotacion(this.idVotacion);
 
-  //     let ccc: number = num * 2;
+    this.activeModal.dismiss('Accept clicked');
+  }
 
-  //     ccc = ccc + 123;
-
-  //     // $('#rrNohay').val(ccc);
-  // });
-    alert('Ahora se tiene que eliminar.');
-    // $(function() { alert('Hello'); });
+  closeModal() {
+    this.activeModal.close('Modal Closed');
   }
 }

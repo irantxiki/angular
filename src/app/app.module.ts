@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
-import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { createCustomElement } from '@angular/elements';
@@ -51,6 +51,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     ReactiveFormsModule,
     NgbModalModule,
+    NgbModule.forRoot(),
     routing,
     BreadcrumbsModule,
     TranslateModule.forRoot({
@@ -67,12 +68,5 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 })
 
 export class AppModule {
-  constructor(private injector: Injector) {
-    const confirmEliminar = createCustomElement(ConfirmEliminarComponent, {
-      injector
-    });
-    customElements.define('app-confirm-eliminar', confirmEliminar);
-  }
 
-  ngDoBootstrap() {}
 }
