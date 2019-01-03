@@ -44,12 +44,12 @@ export class VotacionesComponent implements OnInit {
     });
   }
 
-  votoPositivo() {
-    this.votacionInput.votoPositivo();
-  }
-
-  votoNegativo() {
-    this.votacionInput.votoNegativo();
+  voto(numero: number) {
+    this.votacionInput.numero = numero;
+    this.votacionInput.animacion = true;
+    this.votacionesService.actualizarVotacion(this.votacionInput).subscribe(_ => {
+      this.votacionInput.animacion = false;
+    });
   }
 
   ngOnInit() {
