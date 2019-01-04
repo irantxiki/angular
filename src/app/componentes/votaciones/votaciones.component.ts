@@ -32,10 +32,10 @@ export class VotacionesComponent implements OnInit {
   }
 
   openEliminarModal(id: any) {
-    alert('RR-->' + id);
+
     const modalRef = this.modalService.open(ConfirmEliminarComponent);
-    modalRef.componentInstance.mensaje = '¿Está seguro de eliminar la votación?';
-    modalRef.componentInstance.idVotacion = this.votacionInput.id;
+    modalRef.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
+    modalRef.componentInstance.votacion = this.votacionInput;
 
     modalRef.result.then((result) => {
       console.log(result);
@@ -48,7 +48,7 @@ export class VotacionesComponent implements OnInit {
     this.votacionInput.numero = numero;
     this.votacionInput.animacion = true;
     this.votacionesService.actualizarVotacion(this.votacionInput).subscribe(_ => {
-      this.votacionInput.animacion = false;
+    this.votacionInput.animacion = false;
     });
   }
 

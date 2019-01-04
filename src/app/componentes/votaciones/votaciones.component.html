@@ -3,10 +3,10 @@
       <div class="card-header">
         <div class="row">
             <div class="col-md-5 text-muted" id="titulo">
-                Título: {{votacionInput.titulo}}
+                {{'VOTACIONES.TITULO' | translate}}: {{votacionInput.titulo}}
             </div>
             <div class="col-md-5" id="enlace">
-                Enlace: <a href="//{{ votacionInput.enlace }}" target="_blank" class="card-title">
+                {{'VOTACIONES.ENLACE' | translate}}: <a href="//{{ votacionInput.enlace }}" target="_blank" class="card-title">
                   {{votacionInput.enlace}}
                 </a>
             </div>
@@ -18,7 +18,7 @@
             <div class="col-md-1" style="margin-left: -35px">
                 <!-- <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> -->
               <button type="button" class="btn btn-info" (click)="openEliminarModal('modalConfirmEliminar')">
-                Eliminar 
+                {{'ELIMINAR' | translate}} 
               </button>
                   <!-- <a href="modalConfirmEliminar" data-toggle="modal" data-target="modalConfirmEliminar"> 
                     <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>

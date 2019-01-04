@@ -8,19 +8,23 @@ import { VotacionesService } from '../../../servicios/votaciones.service';
 })
 export class ConfirmEliminarComponent implements OnInit {
   @Input() mensaje = 'default label';
-  @Input() idVotacion;
+  @Input() votacion;
   closeResult: string;
 
-  constructor(public activeModal: NgbActiveModal, private votacionesService: VotacionesService) { }
+  constructor(public activeModal: NgbActiveModal,
+              private votacionesService: VotacionesService,
+              ) { }
 
   ngOnInit() {
   }
 
   onOkEliminar() {
 
-    alert('Ahora se tiene que eliminar.' + this.idVotacion);
+    this.votacionesService.eliminarVotacion(this.votacion)
+      .subscribe( data => {
 
-    this.votacionesService.eliminarVotacion(this.idVotacion);
+      window.location.reload();
+    });
 
     this.activeModal.dismiss('Accept clicked');
   }

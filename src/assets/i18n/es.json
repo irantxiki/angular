@@ -18,7 +18,8 @@
         "T_FORMATO": "El título tiene que tener al menos 4 carácteres",
         "PUNTOS": "Puntos",
         "SUMAR": "Sumar",
-        "QUITAR": "Restar"
+        "QUITAR": "Restar",
+        "CONFIRM_ELIMINAR": "¿Está seguro de eliminar la votación?"
     },
 
     "VERSION_APP": "Votaciones {{value}}",
@@ -28,5 +29,9 @@
     "REGISTRAR": "Registrar",
     "LIMPIAR": "Limpiar",
     "SUBIR": "Subir Fichero",
-    "SELECT_FICHERO": "Seleccionar fichero"
+    "SELECT_FICHERO": "Seleccionar fichero",
+    "ACEPTAR": "Aceptar",
+    "CANCELAR": "Cancelar",
+    "CONFIRMACION": "Confirmación",
+    "ELIMINAR": "Eliminar"
 }
