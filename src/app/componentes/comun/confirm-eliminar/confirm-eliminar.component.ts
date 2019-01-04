@@ -23,7 +23,8 @@ export class ConfirmEliminarComponent implements OnInit {
     this.votacionesService.eliminarVotacion(this.votacion)
       .subscribe( data => {
 
-      document.getElementById(this.votacion.id).style.display = 'none';
+      const element = document.getElementById(this.votacion.id);
+      element.parentNode.removeChild(element);
     });
 
     this.activeModal.dismiss('Accept clicked');
