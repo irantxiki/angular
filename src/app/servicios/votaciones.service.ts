@@ -14,7 +14,7 @@ import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrie
 })
 export class VotacionesService {
 
-  constructor(private http:HttpClient, private messageService: MessageService
+  constructor(private http: HttpClient, private messageService: MessageService
     ) {}
 
   // Esto está configurado en el fichero proxy.config.json
