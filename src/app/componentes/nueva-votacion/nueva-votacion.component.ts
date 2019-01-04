@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
@@ -16,8 +16,9 @@ export class NuevaVotacionComponent implements OnInit {
   loading: boolean;
   nuevaVotacionForm: FormGroup;
   submitted = false;
+  votacion;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, 
+  constructor(private formBuilder: FormBuilder, private router: Router,
               private votacionesService: VotacionesService,
               private es: ElasticsearchService) { }
 
@@ -48,33 +49,39 @@ export class NuevaVotacionComponent implements OnInit {
   }
 
   addVotacion(titulo: string, enlace: string): boolean {
-    //console.log('Titulo: ' + titulo);
-    //console.log('Titulo: ' + enlace);
-    var votacion = new Votaciones(titulo, enlace);
-    //this.votaciones.push(votacion);
-    this.saveVotacion(votacion);
+    this.votacion = new Votaciones(titulo, enlace);
+    this.saveVotacion();
     return false;
   }
 
-  saveVotacion(votacion: Votaciones): void {
+  /**
+   * Guardamos en Postgre y en ElasticSearch
+   * @param votacion
+   */
+  saveVotacion(): void {
     this.loading = true;
-    
-    //Guardamos en Postgre
-    this.votacionesService.crearVotacion(votacion)
+
+    this.votacionesService.crearVotacion(this.votacion)
         .subscribe( data => {
+          this.votacion = data;
           this.loading = false;
-          //alert("User created successfully.");
+
+          this.guardarEnElasticSearch();
         });
-        
-    //Guardamos en Elasticsearch
+  }
+
+  /**
+   * Guardamos en Elasticsearch
+   */
+  guardarEnElasticSearch(): void {
     this.es.addToIndex({
       index: 'gkz_index',
       type: 'votacion',
-      id: votacion.id,
+      id: this.votacion.id,
       body: {
-        titulo: votacion.titulo,
-        enlace: votacion.enlace,
-        numero: votacion.numero,
+        titulo: this.votacion.titulo,
+        enlace: this.votacion.enlace,
+        numero: this.votacion.numero,
         published: new Date().toLocaleString()
       }
     }).then((result) => {
@@ -84,7 +91,6 @@ export class NuevaVotacionComponent implements OnInit {
       alert('Something went wrong, see log for more info');
       console.error(error);
     });
-
   }
 
 
