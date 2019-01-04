@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';

@@ -1,7 +1,7 @@
 
 
 <div class="m-5">
-  <label for="titulo" formControlName="search">{{ 'VOTACIONES.SEARCH.TITULO'| translate }}</label>
+  <label for="search">{{ 'VOTACIONES.SEARCH.TITULO'| translate }}</label>
   <input id="search" type="text" (keyup)="search($event)" class="input m-2">
 
   <div *ngFor="let votacionSource of votacionesSources" style="margin-top:20px">
