@@ -70,7 +70,7 @@ export class NuevaVotacionComponent implements OnInit {
     this.es.addToIndex({
       index: 'gkz_index',
       type: 'votacion',
-      id: 5,
+      id: votacion.id,
       body: {
         titulo: votacion.titulo,
         enlace: votacion.enlace,

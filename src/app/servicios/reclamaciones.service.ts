@@ -15,14 +15,27 @@ export class ReclamacionesService {
   constructor(private http: HttpClient, private messageService: MessageService) { }
   private baseUrl = '/votacionesServ';
 
+  public crearReclamacion(reclamacion: Reclamacion, fileToUpload: File) {
+    const formData: FormData = new FormData();
+    Object.keys(reclamacion).forEach(key => {
+      //formData.append(key, reclamacion[key]);
+    });
+
+    formData.append('file', fileToUpload, fileToUpload.name);
+
+    return this.http.post(this.baseUrl + '/saveReclamacion', formData)
+    .pipe(
+      tap(_ => this.log(reclamacion.nombre)),
+      catchError(this.handleError<any>('post file'))
+    );
+  }
+
   public pruebaFichero(fileToUpload: File): Observable<boolean> {
     const endpoint = '/votacionesServ/pruebaFichero';
     const formData: FormData = new FormData();
-    const httpHeaders: HttpHeaders = new HttpHeaders();
     formData.append('file', fileToUpload, fileToUpload.name);
-    httpHeaders.append('Content-Type', 'undefined');
 
-    return this.http.post(endpoint, formData, { headers: httpHeaders }).pipe(
+    return this.http.post(endpoint, formData).pipe(
       tap(() => this.log('holi')),
       catchError(this.handleError<any>('post file'))
     );

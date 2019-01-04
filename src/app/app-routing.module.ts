@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { InicioVotacionesComponent } from './componentes/inicio-votaciones/inicio-votaciones.component';
 import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
 import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
