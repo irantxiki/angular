@@ -41,11 +41,7 @@ package.json
 package-lock.json
 .gitignore
 tsconfig.json
-<<<<<<< HEAD
 package-lock.json
 package.json
 package.json
 package-lock.json
-=======
-package.json
->>>>>>> 2e0308001a67a996e1fa3571c85952298527a6d3
