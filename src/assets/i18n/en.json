@@ -19,7 +19,8 @@
         "T_FORMATO": "The title must have at least 4 characters",
         "PUNTOS": "Points",
         "SUMAR": "Sum",
-        "QUITAR": "Deduct"
+        "QUITAR": "Deduct",
+        "CONFIRM_ELIMINAR": "Are you sure to eliminate the vote?"
     },
 
     "VERSION_APP": "Voting {{value}}",
@@ -29,6 +30,10 @@
     "REGISTRAR": "Register",
     "LIMPIAR": "Clear",
     "SUBIR": "Upload File",
-    "SELECT_FICHERO": "Select file"
+    "SELECT_FICHERO": "Select file",
+    "ACEPTAR": "Accept",
+    "CANCELAR": "Cancel",
+    "CONFIRMACION": "Confirmation",
+    "ELIMINAR": "Delete"
 }
 

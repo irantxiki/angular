@@ -32,7 +32,11 @@ export class VotacionesService {
   }
 
   public eliminarVotacion(votacion: Votaciones) {
-    return this.http.delete(this.baseUrl + '/delete' + votacion.id);
+    return this.http.post<Votaciones>(this.baseUrl + '/deleteVotacion', votacion)
+    .pipe(
+      tap(_ => this.log(votacion.enlace)),
+      catchError(this.handleError('eliminarVotacion', []))
+    );
   }
 
   public crearVotacion(votacion: Votaciones) {
