@@ -13,6 +13,7 @@
         "LISTADO": "Votes list",
         "BUSCADOR": "Votes Search",
         "ADD_VOTACION" : "Add Vote",
+        "EDIT_VOTACION" : "Edit Vote",
         "TITULO": "Tittle",
         "ENLACE": "Link",
         "T_OBLIGATORIO": "Tittle is required",

@@ -12,6 +12,7 @@
         "LISTADO": "Listado votaciones",
         "BUSCADOR": "Buscador votaciones",
         "ADD_VOTACION" : "Añadir votación",
+        "EDIT_VOTACION" : "Editar votación",
         "TITULO": "Título",
         "ENLACE": "Enlace",
         "T_OBLIGATORIO": "El titulo es obligatorio",
