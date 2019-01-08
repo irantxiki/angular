@@ -1,13 +1,14 @@
 
 
-<div class="m-3">
-  <input type="text" (keyup)="search($event)" placeholder="enter address" class="input">
+<div class="m-5">
+  <label for="search">{{ 'VOTACIONES.SEARCH.TITULO'| translate }}</label>
+  <input id="search" type="text" (keyup)="search($event)" class="input m-2">
 
   <div *ngFor="let votacionSource of votacionesSources" style="margin-top:20px">
     <app-votaciones [votacionInput]='votacionSource._source'></app-votaciones>
   </div>
 
   <div *ngIf="votacionesSources?.length < 1" style="margin-top:20px">
-    <p>Not found!</p>
+    <p>{{ 'VOTACIONES.SEARCH.SIN_DATOS'| translate }}</p>
   </div>
 </div>
