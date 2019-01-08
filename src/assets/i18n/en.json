@@ -4,7 +4,17 @@
         "RECLAMACIONES-MENU":"Claim Management",
         "NUEVA": "New Claim",
         "LISTADO": "Claim List",
-        "BUSCADOR": "Claim Search"
+        "BUSCADOR": "Claim Search",
+        "NOMBRE": "Name",
+        "TELEFONO": "Telephone",
+        "EMAIL": "Email",
+        "COMENTARIO": "Commentary",
+        "FICHERO": "File",
+        "ENVIAR": "Submit",
+        "NEVER_SHARE": "We'll never share your email with anyone else.",
+        "T_OBLIGATORIO": "This field is required",
+        "T_MIN_CHAR": "This field must have at least {{value}} characters",
+        "T_MAIL_FORMATO": "This mail haven't a valid format"
     },
 
     "VOTACIONES": {

@@ -23,7 +23,7 @@ export class ReclamacionesComponent {
   validado = false;
 
   constructor(private reclamacionesService: ReclamacionesService) {
-    this.reclamacion = new Reclamacion('Rafael', '999999999', 'adsf@gladj.com', 'cosas random');
+    this.reclamacion = new Reclamacion();
   }
 
   selectFile(event) {
@@ -33,9 +33,14 @@ export class ReclamacionesComponent {
   upload() {
     this.progress.percentage = 0;
 
-    this.currentFileUpload = this.selectedFiles.item(0);
+
+    if (this.selectedFiles && this.selectedFiles.length > 0) {
+      this.currentFileUpload = this.selectedFiles.item(0);
+    } else {
+      this.currentFileUpload = null;
+    }
+
     this.reclamacionesService.crearReclamacion(this.reclamacion, this.currentFileUpload)
-    //this.reclamacionesService.pruebaFichero(this.currentFileUpload)
     .subscribe( data => {
      console.log(data);
     });

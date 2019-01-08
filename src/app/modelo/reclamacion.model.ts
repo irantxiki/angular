@@ -3,13 +3,13 @@ export class Reclamacion {
     nombre: string;
     telefono: string;
     email: string;
-    texto: string;
+    comentario: string;
 
-    constructor(nombre: string, telefono: string, email: string, texto: string, id?: number) {
+    constructor(nombre?: string, telefono?: string, email?: string, comentario?: string, id?: number) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
-        this.texto = texto;
+        this.comentario = comentario;
     }
 }
