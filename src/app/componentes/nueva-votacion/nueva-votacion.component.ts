@@ -18,7 +18,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   submitted = false;
   idEdit: any;
   tituloVentana: string;
-  votacion: Votaciones;
+  votacion;
   private sub: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
