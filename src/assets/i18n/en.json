@@ -21,7 +21,9 @@
         "PUNTOS": "Points",
         "SUMAR": "Sum",
         "QUITAR": "Deduct",
-        "CONFIRM_ELIMINAR": "Are you sure to eliminate the vote?"
+        "CONFIRM_ELIMINAR": "Are you sure to eliminate the vote?",
+        "SEARCH.TITULO": "Find votes by Title or Link information",
+        "SEARCH.SIN_DATOS": "There is no result with this search. Try again!"
     },
 
     "VERSION_APP": "Voting {{value}}",

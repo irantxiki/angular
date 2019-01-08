@@ -81,33 +81,39 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   }
 
   addVotacion(titulo: string, enlace: string): boolean {
-    // console.log('Titulo: ' + titulo);
-    // console.log('Titulo: ' + enlace);
-    var votacion = new Votaciones(titulo, enlace);
-    // this.votaciones.push(votacion);
-    this.saveVotacion(votacion);
+    this.votacion = new Votaciones(titulo, enlace);
+    this.saveVotacion();
     return false;
   }
 
-  saveVotacion(votacion: Votaciones): void {
+  /**
+   * Guardamos en Postgre y en ElasticSearch
+   * @param votacion
+   */
+  saveVotacion(): void {
     this.loading = true;
 
-    // Guardamos en Postgre
-    this.votacionesService.crearVotacion(votacion)
+    this.votacionesService.crearVotacion(this.votacion)
         .subscribe( data => {
+          this.votacion = data;
           this.loading = false;
-          // alert("User created successfully.");
-        });
 
-    // Guardamos en Elasticsearch
+          this.guardarEnElasticSearch();
+        });
+  }
+
+  /**
+   * Guardamos en Elasticsearch
+   */
+  guardarEnElasticSearch(): void {
     this.es.addToIndex({
       index: 'gkz_index',
       type: 'votacion',
-      id: votacion.id,
+      id: this.votacion.id,
       body: {
-        titulo: votacion.titulo,
-        enlace: votacion.enlace,
-        numero: votacion.numero,
+        titulo: this.votacion.titulo,
+        enlace: this.votacion.enlace,
+        numero: this.votacion.numero,
         published: new Date().toLocaleString()
       }
     }).then((result) => {
@@ -117,7 +123,6 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
       alert('Something went wrong, see log for more info');
       console.error(error);
     });
-
   }
 
   ngOnDestroy() {

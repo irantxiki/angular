@@ -34,8 +34,8 @@ export class ReclamacionesComponent {
     this.progress.percentage = 0;
 
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.reclamacionesService.crearReclamacion(this.reclamacion, this.currentFileUpload)
-    //this.reclamacionesService.pruebaFichero(this.currentFileUpload)
+    //this.reclamacionesService.crearReclamacion(this.reclamacion, this.currentFileUpload)
+    this.reclamacionesService.pruebaFichero(this.currentFileUpload)
     .subscribe( data => {
      console.log(data);
     });
