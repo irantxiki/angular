@@ -9,6 +9,7 @@ import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { MessageService } from '../../servicios/message.service';
 import { ConfirmEliminarComponent } from '../comun/confirm-eliminar/confirm-eliminar.component';
+import { tipo } from '../util/TipoAlertas';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class VotacionesComponent implements OnInit {
               private votacionesService: VotacionesService, private messageService: MessageService,
               private modalService: NgbModal
               ) {
-
+                messageService.clear();
   }
 
   openEliminarModal(id: any) {
@@ -38,9 +39,9 @@ export class VotacionesComponent implements OnInit {
     modalRef.componentInstance.votacion = this.votacionInput;
 
     modalRef.result.then((result) => {
-      console.log(result);
+      this.messageService.add({texto: result, tipo: tipo.log});
     }).catch((error) => {
-      console.log(error);
+      this.messageService.add({texto: error, tipo: tipo.error});
     });
   }
 

@@ -1,8 +1,12 @@
-<div *ngIf="messageService.messages.length">
-    <h3>{{'MENSAGES' | translate}}</h3>
-    <button class="clear" (click)="messageService.clear()">{{''</button>
-    <br>
-    <ol>
-      <li *ngFor='let message of messageService.messages'> {{'LIMPIAR'| translate}} </li>
-    </ol>
-  </div>
+ <div class="text-center m-5" *ngIf="messageService.messages.length">
+    <div>
+      <span (click)="messageService.clear()" class="badge badge-secondary m-1">{{'LIMPIAR' | translate}}</span >
+      <span (click)="commutar()" class="badge badge-secondary m-1"> {{ log ? ('LOG'  | translate) : ('V_MENSAJE' | translate)}}</span >
+      
+      <br>
+      
+      <div [ngClass]="message.tipo" class="alert" role="alert" *ngFor='let message of commutar()'>
+          {{message.texto | translate}}
+      </div>
+    </div>
+</div>

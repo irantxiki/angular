@@ -31,6 +31,8 @@ import { ReclamacionesComponent } from './componentes/reclamaciones/reclamacione
 import { BreadcrumbsModule } from 'ng6-breadcrumbs';
 import { ReclamacionesService } from './servicios/reclamaciones.service';
 
+import { TipoAlertas } from './componentes/util/TipoAlertas';
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -68,7 +70,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       }
     })
   ],
-  providers: [VotacionesService, ReclamacionesService, MessageService],
+  providers: [VotacionesService, ReclamacionesService, MessageService, TipoAlertas],
   entryComponents: [ConfirmEliminarComponent],
   bootstrap: [AppComponent]
 })

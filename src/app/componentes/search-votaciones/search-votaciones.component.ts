@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { VotacionesSource } from '../../modelo/votaciones.interface';
 import { ElasticsearchService } from '../../servicios/elasticsearch.service';
+import { MessageService } from 'src/app/servicios/message.service';
+import { tipo } from '../util/TipoAlertas';
 
 @Component({
   selector: 'app-search-votaciones',
   templateUrl: './search-votaciones.component.html',
-  styleUrls: ['./search-votaciones.component.css']
+  styleUrls: []
 })
 export class SearchVotacionesComponent implements OnInit {
   private static readonly INDEX = 'gkz_index';
@@ -16,8 +18,9 @@ export class SearchVotacionesComponent implements OnInit {
 
   private lastKeypress = 0;
 
-  constructor(private es: ElasticsearchService) {
+  constructor(private es: ElasticsearchService, private messageService: MessageService) {
     this.queryText = '';
+    messageService.clear();
   }
 
   ngOnInit() {
@@ -35,9 +38,9 @@ export class SearchVotacionesComponent implements OnInit {
             this.votacionesSources = response.hits.hits;
             console.log(response);
           }, error => {
-            console.error(error);
+            this.messageService.add({texto: error, tipo: tipo.error});
           }).then(() => {
-            console.log('Search Completed!');
+            this.messageService.add({texto: 'Search Completed!', tipo: tipo.log});
           });
     }
 

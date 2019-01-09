@@ -11,3 +11,7 @@ body {
    grid-template-columns: 70px auto;
    height: 100%;
 }
+
+.badge {
+    cursor: pointer;
+}

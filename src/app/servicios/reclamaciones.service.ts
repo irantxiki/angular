@@ -6,13 +6,16 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Reclamacion } from '../modelo/reclamacion.model';
 import { Votaciones } from '../modelo/votaciones.model';
+import { tipo } from '../componentes/util/TipoAlertas';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReclamacionesService {
 
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+  constructor(private http: HttpClient, private messageService: MessageService) {
+    messageService.clear();
+   }
   private baseUrl = '/votacionesServ';
 
   public crearReclamacion(reclamacion: Reclamacion, fileToUpload: File) {
@@ -51,7 +54,7 @@ export class ReclamacionesService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      this.messageService.add({texto: error, tipo: tipo.error});
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
@@ -63,6 +66,6 @@ export class ReclamacionesService {
 
   /** Log a VotacionesService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`VotacionesService: ${message}`);
+    this.messageService.add({texto: message, tipo: tipo.error});
   }
 }
