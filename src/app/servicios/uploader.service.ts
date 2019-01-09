@@ -8,12 +8,15 @@ import { of } from 'rxjs';
 import { catchError, last, map, tap } from 'rxjs/operators';
 
 import { MessageService } from './message.service';
+import { tipo } from '../componentes/util/TipoAlertas';
 
 @Injectable()
 export class UploaderService {
   constructor(
     private http: HttpClient,
-    private messenger: MessageService) {}
+    private messenger: MessageService) {
+      messenger.clear();
+    }
 
   // If uploading multiple files, change to:
   // upload(files: FileList) {
@@ -86,13 +89,13 @@ export class UploaderService {
 
     return (error: HttpErrorResponse) => {
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      this.messenger.add({texto: String(error), tipo: tipo.error});
 
       const message = (error.error instanceof Error) ?
         error.error.message :
        `server returned code ${error.status} with body "${error.error}"`;
 
-      this.messenger.add(`${userMessage} ${message}`);
+      this.messenger.add({texto: `userMessage message`, tipo: 'alert-danger'});
 
       // Let app keep running but indicate failure.
       return of(userMessage);
@@ -100,6 +103,6 @@ export class UploaderService {
   }
 
   private showProgress(message: string) {
-    this.messenger.add(message);
+    this.messenger.add({texto: message, tipo: 'alert-info'});
   }
 }

@@ -4,12 +4,15 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
+import { MessageService } from 'src/app/servicios/message.service';
+
+import { tipo } from '../util/TipoAlertas';
 
 
 @Component({
   selector: 'app-nueva-votacion',
   templateUrl: './nueva-votacion.component.html',
-  styleUrls: ['./nueva-votacion.component.css']
+  styleUrls: []
 })
 export class NuevaVotacionComponent implements OnInit, OnDestroy {
 
@@ -18,13 +21,16 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   submitted = false;
   idEdit: any;
   tituloVentana: string;
-  votacion;
+  votacion: any;
   private sub: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
               private route: ActivatedRoute,
               private votacionesService: VotacionesService,
-              private es: ElasticsearchService) { }
+              private messageService: MessageService,
+              private es: ElasticsearchService) {
+    messageService.clear();
+  }
 
   ngOnInit(): void {
 
@@ -98,8 +104,11 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
           this.votacion = data;
           this.loading = false;
 
+          this.messageService.add({texto: 'VOTACIONES.ALTA', tipo: tipo.success});
+          this.messageService.add({texto: 'POSTGRES.ADD_OK', tipo: tipo.log});
           this.guardarEnElasticSearch();
-        });
+        },
+        err => this.loading = false);
   }
 
   /**
@@ -107,7 +116,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
    */
   guardarEnElasticSearch(): void {
     this.es.addToIndex({
-      index: 'gkz_index',
+      index: 'votaciones_index',
       type: 'votacion',
       id: this.votacion.id,
       body: {
@@ -117,11 +126,9 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
         published: new Date().toLocaleString()
       }
     }).then((result) => {
-      console.log(result);
-      alert('Document added, see log for more info');
+      this.messageService.add({texto: 'ELASTIC.ADD_OK', tipo: tipo.log});
     }, error => {
-      alert('Something went wrong, see log for more info');
-      console.error(error);
+      this.messageService.add({texto: 'ELASTIC.ERROR', tipo: tipo.log});
     });
   }
 

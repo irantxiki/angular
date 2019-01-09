@@ -32,7 +32,8 @@
         "QUITAR": "Restar",
         "CONFIRM_ELIMINAR": "¿Está seguro de eliminar la votación?",
         "SEARCH.TITULO": "Encuentre los votos buscando por título o enlace",
-        "SEARCH.SIN_DATOS": "No se han encontrado datos con la búsqueda. ¡Inténtelo de nuevo!"
+        "SEARCH.SIN_DATOS": "No se han encontrado datos con la búsqueda. ¡Inténtelo de nuevo!",
+        "ALTA": "Se creo correctamente la votación"
     },
 
     "VERSION_APP": "Votaciones {{value}}",
@@ -46,5 +47,15 @@
     "ACEPTAR": "Aceptar",
     "CANCELAR": "Cancelar",
     "CONFIRMACION": "Confirmación",
-    "ELIMINAR": "Eliminar"
+    "ELIMINAR": "Eliminar",
+    "LOG": "VER LOGS",
+    "V_MENSAJE": "VER MENSAJE",
+    "POSTGRES": {
+        "ADD_OK": "Se ha añadido correctamente a Postgres",
+        "ERROR": "Error al añadir a Postgres"
+    },
+    "ELASTIC": {
+        "ADD_OK": "Se ha añadido correctamente a ElasticSearch",
+        "ERROR": "Error al añadir a ElasticSearch"
+    }
 }

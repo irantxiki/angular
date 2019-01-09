@@ -5,7 +5,7 @@
   <input id="search" type="text" (keyup)="search($event)" class="input m-2">
 
   <div *ngFor="let votacionSource of votacionesSources" style="margin-top:20px">
-    <app-votaciones [votacionInput]='votacionSource._source'></app-votaciones>
+    <app-votaciones [votacionInput]='votacionSource'></app-votaciones>
   </div>
 
   <div *ngIf="votacionesSources?.length < 1" style="margin-top:20px">

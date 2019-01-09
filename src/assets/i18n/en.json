@@ -33,7 +33,8 @@
         "QUITAR": "Deduct",
         "CONFIRM_ELIMINAR": "Are you sure to eliminate the vote?",
         "SEARCH.TITULO": "Find votes by Title or Link information",
-        "SEARCH.SIN_DATOS": "There is no result with this search. Try again!"
+        "SEARCH.SIN_DATOS": "There is no result with this search. Try again!",
+        "ALTA": "The vote was created correctly"
     },
 
     "VERSION_APP": "Voting {{value}}",
@@ -47,6 +48,16 @@
     "ACEPTAR": "Accept",
     "CANCELAR": "Cancel",
     "CONFIRMACION": "Confirmation",
-    "ELIMINAR": "Delete"
+    "ELIMINAR": "Delete",
+    "LOG": "VIEW LOGS",
+    "V_MENSAJE": "VIEW MESSAGE",
+    "POSTGRES": {
+        "ADD_OK": "Correctly saved in Postgres",
+        "ERROR": "Error saving in Postgres"
+    },
+    "ELASTIC": {
+        "ADD_OK": "Correctly saved in ElasticSearch",
+        "ERROR": "Error saving in ElasticSearch"
+    }
 }
 
