@@ -27,10 +27,6 @@ export class ReclamacionesService {
     formData.append('file', fileToUpload);
     formData.append('reclamacion', JSON.stringify(reclamacion));
 
-    const req = new HttpRequest('POST', '/upload/file', fileToUpload, {
-      reportProgress: true
-    });
-
     return this.http.post(this.baseUrl + '/saveReclamacion', formData,
       {reportProgress: true, observe: 'events'})
       .pipe(
