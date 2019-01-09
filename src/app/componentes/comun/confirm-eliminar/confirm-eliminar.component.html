@@ -1,13 +1,10 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modalEliminarTitulo">{{'CONFIRMACION' | translate}}</h4>
-  <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
-  </button> -->
 </div>
 <div class="modal-body">
   <p>{{mensaje | translate}}</p>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="onOkEliminar()">{{'ACEPTAR' | translate}}</button>
+    <button type="button" class="btn btn-primary" (click)="accion(); activeModal.dismiss('Close clicked')">{{'ACEPTAR' | translate}}</button>
     <button type="button" class="btn btn-default" (click)="activeModal.dismiss('Close clicked')">{{'CANCELAR' | translate}}</button>
 </div>
