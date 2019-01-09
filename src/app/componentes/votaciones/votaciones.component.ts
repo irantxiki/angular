@@ -1,8 +1,6 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 
 // Votaciones Class
 import { Votaciones } from '../../modelo/votaciones.model';
@@ -23,8 +21,9 @@ export class VotacionesComponent implements OnInit {
 
   votaciones: Votaciones[];
 
-  modalReference: NgbModalRef;
-
+  @Output() recargarListado: EventEmitter<number>;
+  modalEliminarVotacion: NgbModalRef;
+  
   constructor( private route: ActivatedRoute, private router: Router,
               private votacionesService: VotacionesService, private messageService: MessageService,
               private modalService: NgbModal
@@ -34,15 +33,18 @@ export class VotacionesComponent implements OnInit {
 
   openEliminarModal(id: any) {
 
-    const modalRef = this.modalService.open(ConfirmEliminarComponent);
-    modalRef.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
-    modalRef.componentInstance.votacion = this.votacionInput;
+    this.modalEliminarVotacion = this.modalService.open(ConfirmEliminarComponent);
+    this.modalEliminarVotacion.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
+    this.modalEliminarVotacion.componentInstance.accion = () => this.onOkEliminarVotacion();
 
-    modalRef.result.then((result) => {
-      this.messageService.add({texto: result, tipo: tipo.log});
-    }).catch((error) => {
-      this.messageService.add({texto: error, tipo: tipo.error});
-    });
+  }
+
+  onOkEliminarVotacion() {
+      this.votacionesService.eliminarVotacion(this.votacionInput)
+        .subscribe(data  => {
+          this.recargarListado.emit ();
+          this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.log});
+      });
   }
 
   voto(numero: number) {

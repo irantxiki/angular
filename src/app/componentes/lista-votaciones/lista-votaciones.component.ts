@@ -32,14 +32,15 @@ export class ListaVotacionesComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    /*this.votacionesService.getVotaciones().subscribe(
-    data => this.votaciones = data
-    );*/
+  inicializarVotaciones() {
     this.votacionesService.getVotaciones()
     .subscribe(votaciones => {
       this.messageService.add({texto: 'pasa por aqui', tipo: tipo.log});
       this.votaciones = votaciones;
     });
+  }
+
+  ngOnInit() {
+    this.inicializarVotaciones();
   }
 }
