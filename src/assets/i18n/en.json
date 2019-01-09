@@ -38,8 +38,8 @@
 
     "VERSION_APP": "Voting {{value}}",
     "SEARCH": "Search",
-    "MENSAGE": "Message",
-    "MENSAGES": "Messages",
+    "MENSAJE": "Message",
+    "MENSAJES": "Messages",
     "REGISTRAR": "Register",
     "LIMPIAR": "Clear",
     "SUBIR": "Upload File",
