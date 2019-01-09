@@ -115,7 +115,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
    */
   guardarEnElasticSearch(): void {
     this.es.addToIndex({
-      index: 'gkz_index',
+      index: 'votaciones_index',
       type: 'votacion',
       id: this.votacion.id,
       body: {

@@ -10,7 +10,7 @@ import { tipo } from '../util/TipoAlertas';
   styleUrls: []
 })
 export class SearchVotacionesComponent implements OnInit {
-  private static readonly INDEX = 'gkz_index';
+  private static readonly INDEX = 'votaciones_index';
   private static readonly TYPE = 'votacion';
 
   votacionesSources: VotacionesSource[];
