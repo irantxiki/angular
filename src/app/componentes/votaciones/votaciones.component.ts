@@ -23,12 +23,13 @@ export class VotacionesComponent implements OnInit {
 
   @Output() recargarListado: EventEmitter<number>;
   modalEliminarVotacion: NgbModalRef;
-  
+
   constructor( private route: ActivatedRoute, private router: Router,
               private votacionesService: VotacionesService, private messageService: MessageService,
               private modalService: NgbModal
               ) {
                 messageService.clear();
+                this.recargarListado = new EventEmitter();
   }
 
   openEliminarModal(id: any) {
@@ -44,7 +45,8 @@ export class VotacionesComponent implements OnInit {
         .subscribe(data  => {
           this.recargarListado.emit ();
           this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.log});
-      });
+      },
+      err => {});
   }
 
   voto(numero: number) {

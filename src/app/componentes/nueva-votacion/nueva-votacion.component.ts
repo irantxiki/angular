@@ -107,7 +107,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
           this.messageService.add({texto: 'VOTACIONES.ALTA', tipo: tipo.success});
           this.guardarEnElasticSearch();
         },
-        err => { });
+        err => this.loading = false);
   }
 
   /**
