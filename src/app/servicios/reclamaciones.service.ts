@@ -17,11 +17,9 @@ export class ReclamacionesService {
 
   public crearReclamacion(reclamacion: Reclamacion, fileToUpload: File) {
     const formData: FormData = new FormData();
-    Object.keys(reclamacion).forEach(key => {
-      //formData.append(key, reclamacion[key]);
-    });
 
-    formData.append('file', fileToUpload, fileToUpload.name);
+    formData.append('file', fileToUpload);
+    formData.append('reclamacion', JSON.stringify(reclamacion));
 
     return this.http.post(this.baseUrl + '/saveReclamacion', formData)
     .pipe(
