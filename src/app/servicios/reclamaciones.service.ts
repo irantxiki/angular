@@ -5,11 +5,6 @@ import { MessageService } from './message.service';
 import { Observable, of } from 'rxjs';
 import { catchError, last, map, tap } from 'rxjs/operators';
 import { Reclamacion } from '../modelo/reclamacion.model';
-<<<<<<< HEAD
-=======
-import { Votaciones } from '../modelo/votaciones.model';
-import { tipo } from '../componentes/util/TipoAlertas';
->>>>>>> e7d703ddeceeb26bf200618f855b76828e20c2f4
 
 @Injectable({
   providedIn: 'root'
