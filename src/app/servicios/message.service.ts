@@ -7,7 +7,6 @@ export class MessageService {
   log: Mensaje[] = [];
 
   add(message: Mensaje) {
-    // if (message.tipo === 'alert-secondary') {
       if (message.tipo === tipo.log) {
       this.log.push(message);
     } else {

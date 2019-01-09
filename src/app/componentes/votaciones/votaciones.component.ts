@@ -9,6 +9,8 @@ import { MessageService } from '../../servicios/message.service';
 import { ConfirmEliminarComponent } from '../comun/confirm-eliminar/confirm-eliminar.component';
 import { tipo } from '../util/TipoAlertas';
 
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-votaciones',
@@ -19,7 +21,7 @@ export class VotacionesComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() votacionInput: Votaciones;
 
-  votaciones: Votaciones[];
+  public votaciones: Votaciones[];
 
   @Output() recargarListado: EventEmitter<number>;
   modalEliminarVotacion: NgbModalRef;
@@ -28,7 +30,6 @@ export class VotacionesComponent implements OnInit {
               private votacionesService: VotacionesService, private messageService: MessageService,
               private modalService: NgbModal
               ) {
-                messageService.clear();
                 this.recargarListado = new EventEmitter();
   }
 
@@ -44,7 +45,7 @@ export class VotacionesComponent implements OnInit {
       this.votacionesService.eliminarVotacion(this.votacionInput)
         .subscribe(data  => {
           this.recargarListado.emit ();
-          this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.log});
+          this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.success});
       },
       err => {});
   }

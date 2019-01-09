@@ -38,7 +38,7 @@ export class SearchVotacionesComponent implements OnInit {
             this.votacionesSources = response.hits.hits.map(a => a._source);
             console.log(response);
           }, error => {
-            this.messageService.add({texto: error, tipo: tipo.error});
+            this.messageService.add({texto: error.message, tipo: tipo.error});
           }).then(() => {
             this.messageService.add({texto: 'Search Completed!', tipo: tipo.log});
           });
