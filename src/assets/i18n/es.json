@@ -50,6 +50,10 @@
     "ELIMINAR": "Eliminar",
     "LOG": "VER LOGS",
     "V_MENSAJE": "VER MENSAJE",
+    "POSTGRES": {
+        "ADD_OK": "Se ha añadido correctamente a Postgres",
+        "ERROR": "Error al añadir a Postgres"
+    },
     "ELASTIC": {
         "ADD_OK": "Se ha añadido correctamente a ElasticSearch",
         "ERROR": "Error al añadir a ElasticSearch"

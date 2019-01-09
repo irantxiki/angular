@@ -86,7 +86,7 @@ export class ElasticsearchService {
           }
         }
       },
-      '_source': ['titulo', 'enlace']
+      '_source': ['titulo', 'enlace', 'numero']
     });
   }
 }

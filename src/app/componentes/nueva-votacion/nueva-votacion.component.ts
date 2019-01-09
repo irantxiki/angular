@@ -21,7 +21,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   submitted = false;
   idEdit: any;
   tituloVentana: string;
-  votacion;
+  votacion: any;
   private sub: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router,
@@ -105,6 +105,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
           this.loading = false;
 
           this.messageService.add({texto: 'VOTACIONES.ALTA', tipo: tipo.success});
+          this.messageService.add({texto: 'POSTGRES.ADD_OK', tipo: tipo.log});
           this.guardarEnElasticSearch();
         },
         err => this.loading = false);

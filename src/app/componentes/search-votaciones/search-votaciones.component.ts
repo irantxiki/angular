@@ -40,7 +40,7 @@ export class SearchVotacionesComponent implements OnInit {
           }, error => {
             this.messageService.add({texto: error.message, tipo: tipo.error});
           }).then(() => {
-            this.messageService.add({texto: 'Search Completed!', tipo: tipo.log});
+            this.messageService.add({texto: 'Search in Elasticsearch Completed!', tipo: tipo.log});
           });
     }
 
