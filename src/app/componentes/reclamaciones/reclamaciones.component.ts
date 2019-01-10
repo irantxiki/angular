@@ -47,6 +47,7 @@ export class ReclamacionesComponent {
     _ => {},
     () => {
       this.messageService.add({texto: 'RECLAMACIONES.RECLAMACION_CREADA', tipo: tipo.success});
+      this.porcentaje = 0;
     });
 
   }
