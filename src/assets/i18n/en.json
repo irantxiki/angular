@@ -37,7 +37,7 @@
         "ALTA": "The vote was created correctly"
     },
 
-    "VERSION_APP": "Voting {{value}}",
+    "VERSION_APP": "Voting {{value}} - {{value2}}",
     "SEARCH": "Search",
     "MENSAJE": "Message",
     "MENSAJES": "Messages",

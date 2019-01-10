@@ -32,6 +32,7 @@ import { BreadcrumbsModule } from 'ng6-breadcrumbs';
 import { ReclamacionesService } from './servicios/reclamaciones.service';
 
 import { TipoAlertas } from './componentes/util/TipoAlertas';
+import { PieComponent } from './componentes/comun/pie/pie.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -51,7 +52,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     SidebarComponent,
     ReclamacionesComponent,
     NavbarComponent,
-    ConfirmEliminarComponent
+    ConfirmEliminarComponent,
+    PieComponent
   ],
   imports: [
     BrowserModule,

@@ -36,7 +36,7 @@
         "ALTA": "Se creo correctamente la votación"
     },
 
-    "VERSION_APP": "Votaciones {{value}}",
+    "VERSION_APP": "Votaciones {{value}} - {{value2}}",
     "SEARCH": "Buscar",
     "MENSAJE": "Mensaje",
     "MENSAJES": "Mensajes",
