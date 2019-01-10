@@ -51,9 +51,13 @@
     "ELIMINAR": "Delete",
     "LOG": "VIEW LOGS",
     "V_MENSAJE": "VIEW MESSAGE",
+    "POSTGRES": {
+        "ADD_OK": "Correctly saved in Postgres",
+        "ERROR": "Error saving in Postgres"
+    },
     "ELASTIC": {
-        "ADD_OK": "Se ha añadido correctamente a ElasticSearch",
-        "ERROR": "Error al añadir a ElasticSearch"
+        "ADD_OK": "Correctly saved in ElasticSearch",
+        "ERROR": "Error saving in ElasticSearch"
     }
 }
 

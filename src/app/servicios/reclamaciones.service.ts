@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest, HttpHeaders, HttpEventType, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { MessageService } from './message.service';
 
 import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { catchError, last, map, tap } from 'rxjs/operators';
 import { Reclamacion } from '../modelo/reclamacion.model';
-import { Votaciones } from '../modelo/votaciones.model';
-import { tipo } from '../componentes/util/TipoAlertas';
 
 @Injectable({
   providedIn: 'root'
@@ -24,46 +22,19 @@ export class ReclamacionesService {
     formData.append('file', fileToUpload);
     formData.append('reclamacion', JSON.stringify(reclamacion));
 
-    return this.http.post(this.baseUrl + '/saveReclamacion', formData)
-    .pipe(
-      tap(_ => this.log(reclamacion.nombre)),
-      catchError(this.handleError<any>('post file'))
-    );
+    return this.http.post(this.baseUrl + '/saveReclamacion', formData,
+      {reportProgress: true, observe: 'events'})
+      .pipe(
+        map(event => this.getEventMessage(event))
+      );
   }
 
-  public pruebaFichero(fileToUpload: File): Observable<boolean> {
-    const endpoint = '/votacionesServ/pruebaFichero';
-    const formData: FormData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
-
-    return this.http.post(endpoint, formData).pipe(
-      tap(() => this.log('holi')),
-      catchError(this.handleError<any>('post file'))
-    );
-  }
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      this.messageService.add({texto: error, tipo: tipo.error});
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
-  }
-
-  /** Log a VotacionesService message with the MessageService */
-  private log(message: string) {
-    this.messageService.add({texto: message, tipo: tipo.error});
+  private getEventMessage (event: HttpEvent<any>) {
+    if (event.type === HttpEventType.UploadProgress) {
+      const percentDone = Math.round(100 * event.loaded / event.total);
+      return percentDone;
+    } /*else if (event instanceof HttpResponse) {
+      return null;
+    }*/
   }
 }

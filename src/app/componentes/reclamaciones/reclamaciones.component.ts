@@ -5,6 +5,7 @@ import { ReclamacionesService } from 'src/app/servicios/reclamaciones.service';
 import { UploaderComponent } from '../util/uploader/uploader.component';
 import { VotacionesService } from 'src/app/servicios/votaciones.service';
 import { Votaciones } from 'src/app/modelo/votaciones.model';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reclamaciones',
@@ -21,6 +22,7 @@ export class ReclamacionesComponent {
   progress: { percentage: number } = { percentage: 0 };
   reclamacion: Reclamacion;
   validado = false;
+  porcentaje: number = null;
 
   constructor(private reclamacionesService: ReclamacionesService) {
     this.reclamacion = new Reclamacion();
@@ -28,6 +30,11 @@ export class ReclamacionesComponent {
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
+  }
+
+  guardar(formulario: NgForm) {
+    this.validado = !this.validado;
+    this.upload();
   }
 
   upload() {
@@ -42,16 +49,10 @@ export class ReclamacionesComponent {
 
     this.reclamacionesService.crearReclamacion(this.reclamacion, this.currentFileUpload)
     .subscribe( data => {
-     console.log(data);
+      if (data) {
+        this.porcentaje = data;
+      }
     });
-
-    //this.selectedFiles = undefined;
-  }
-
-  guardar(formulario: NgForm) {
-    this.validado = !this.validado;
-    this.upload();
-    console.log(formulario);
   }
 
 }

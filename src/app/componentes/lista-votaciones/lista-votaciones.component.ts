@@ -29,7 +29,7 @@ export class ListaVotacionesComponent implements OnInit {
 
   inicializarVotaciones() {
     this.votacionesService.getVotaciones().subscribe(votaciones => {
-      this.messageService.add({texto: 'pasa por aqui', tipo: tipo.log});
+      this.messageService.add({texto: 'Obtiene las votaciones de Postgres', tipo: tipo.log});
       this.votaciones = votaciones;
     });
   }
