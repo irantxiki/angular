@@ -14,10 +14,10 @@ const APP_ROUTES: Routes = [
         breadcrumb: 'Inicio'
     },
     children: [
-    { path: 'nueva-votacion', component: NuevaVotacionComponent },
-    { path: 'lista-votaciones', component: ListaVotacionesComponent },
-    { path: 'detalle-votacion', component: NuevaVotacionComponent },
-    { path: 'reclamaciones', component: ReclamacionesComponent },
+    { path: 'reclamaciones', component: ReclamacionesComponent,
+        data: {
+            breadcrumb: 'Reclamaciones'
+        } },
     { path: 'nueva-votacion', component: NuevaVotacionComponent,
     data: {
         breadcrumb: 'Nueva Votación'
