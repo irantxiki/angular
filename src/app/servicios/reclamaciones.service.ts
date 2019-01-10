@@ -35,6 +35,8 @@ export class ReclamacionesService {
     if (event.type === HttpEventType.UploadProgress) {
       const percentDone = Math.round(100 * event.loaded / event.total);
       return percentDone;
+    } else if (event.type === HttpEventType.Response) {
+      return event.body;
     }
   }
 

@@ -1,11 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Reclamacion } from 'src/app/modelo/reclamacion.model';
 import { ReclamacionesService } from 'src/app/servicios/reclamaciones.service';
-import { UploaderComponent } from '../util/uploader/uploader.component';
-import { VotacionesService } from 'src/app/servicios/votaciones.service';
-import { Votaciones } from 'src/app/modelo/votaciones.model';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { tipo } from '../util/TipoAlertas';
 import { MessageService } from 'src/app/servicios/message.service';
 
@@ -39,8 +35,9 @@ export class ReclamacionesComponent {
   upload() {
     this.reclamacionesService.crearReclamacion(this.reclamacion, this.ficheroSeleccionado)
     .subscribe( data => {
-      if (data) {
-        console.log(data);
+      if (data instanceof Object) {
+        this.reclamacion = data;
+      } else {
         this.porcentaje = data;
       }
     },
