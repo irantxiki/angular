@@ -1,7 +1,7 @@
  <div class="text-center m-3" *ngIf="messageService.messages.length || messageService.log.length">
     <div>
       <span (click)="messageService.clear()" class="badge badge-secondary m-1">{{'LIMPIAR' | translate}}</span >
-      <span (click)="commutar()" class="badge badge-secondary m-1"> {{ log ? ('LOG'  | translate) : ('V_MENSAJE' | translate)}}</span >
+      <span (click)="messageService.mostrarLog = !messageService.mostrarLog" class="badge badge-secondary m-1"> {{ !messageService.mostrarLog ? ('LOG'  | translate) : ('V_MENSAJE' | translate)}}</span >
       
       <br>
       

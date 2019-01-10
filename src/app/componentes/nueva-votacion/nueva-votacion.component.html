@@ -4,7 +4,7 @@
   <div class="col-md-8 offset-md-2">
     <div class="card">
       <form [formGroup]="nuevaVotacionForm" (ngSubmit)="onSubmit()" class="card-body">
-        <h3 class="card-title">{{ 'VOTACIONES.ADD_VOTACION'| translate }}</h3>
+        <h3 class="card-title">{{ tituloVentana | translate }}</h3>
         <label for="titulo">{{ 'VOTACIONES.TITULO'| translate }}</label>
         <input type="text" formControlName="titulo" id="titulo" #newTitulo class="form-control" 
                 autofocus required  [class.is-invalid]="submitted && f.titulo.errors">
@@ -32,7 +32,10 @@
         </button>-->
 
         <div class="form-group">
-          <button [disabled]="loading" class="btn btn-primary btn-block mt-4">{{'REGISTRAR' | translate}}</button>
+          <button [disabled]="loading" class="btn btn-primary mt-4 float-right">{{'REGISTRAR' | translate}}</button>
+          <button type="button" id="btnVolver" class="btn btn-info mt-4 mr-2 float-right" (click)="volverListado()">
+            {{'VOLVER' | translate}} 
+          </button>
         </div>
       </form>
     </div>

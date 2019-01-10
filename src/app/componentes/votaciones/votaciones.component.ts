@@ -10,6 +10,7 @@ import { ConfirmEliminarComponent } from '../comun/confirm-eliminar/confirm-elim
 import { tipo } from '../util/TipoAlertas';
 
 import { Observable } from 'rxjs';
+import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
 
 
 @Component({
@@ -27,8 +28,10 @@ export class VotacionesComponent implements OnInit {
   modalEliminarVotacion: NgbModalRef;
 
   constructor( private route: ActivatedRoute, private router: Router,
-              private votacionesService: VotacionesService, private messageService: MessageService,
-              private modalService: NgbModal
+              private votacionesService: VotacionesService,
+              private messageService: MessageService,
+              private modalService: NgbModal,
+              private es: ElasticsearchService
               ) {
                 this.recargarListado = new EventEmitter();
   }
@@ -39,6 +42,8 @@ export class VotacionesComponent implements OnInit {
     this.modalEliminarVotacion.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
     this.modalEliminarVotacion.componentInstance.accion = () => this.onOkEliminarVotacion();
 
+    this.messageService.clear();
+
   }
 
   onOkEliminarVotacion() {
@@ -46,6 +51,9 @@ export class VotacionesComponent implements OnInit {
         .subscribe(data  => {
           this.recargarListado.emit ();
           this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.success});
+
+          // eliminamos en elasticSearch
+          this.es.delete(this.votacionInput);
       },
       err => {});
   }
@@ -54,8 +62,15 @@ export class VotacionesComponent implements OnInit {
     this.votacionInput.numero = numero;
     this.votacionInput.animacion = true;
     this.votacionesService.actualizarVotacion(this.votacionInput).subscribe(_ => {
-    this.votacionInput.animacion = false;
+      this.votacionInput.animacion = false;
+
+      // actualizar en elasticSearch
+      this.es.update(this.votacionInput);
     });
+  }
+
+  verDetalle() {
+    this.router.navigate(['/votaciones/detalle-votacion', { 'record': JSON.stringify(this.votacionInput) }]);
   }
 
   ngOnInit() {

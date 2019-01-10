@@ -5,6 +5,7 @@ import { tipo } from '../componentes/util/TipoAlertas';
 export class MessageService {
   messages: Mensaje[] = [];
   log: Mensaje[] = [];
+  mostrarLog = false;
 
   add(message: Mensaje) {
       if (message.tipo === tipo.log) {
@@ -17,6 +18,7 @@ export class MessageService {
   clear() {
     this.messages = [];
     this.log = [];
+    this.mostrarLog = false;
   }
 }
 
