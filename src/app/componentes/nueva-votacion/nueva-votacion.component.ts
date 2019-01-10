@@ -52,10 +52,10 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
 
     if (this.votacion) {
       this.tituloVentana = 'VOTACIONES.EDIT_VOTACION';
-      document.getElementById('btnCancelar').style.display = 'block';
+      document.getElementById('btnVolver').style.display = 'block';
     } else {
       this.tituloVentana = 'VOTACIONES.ADD_VOTACION';
-      document.getElementById('btnCancelar').style.display = 'none';
+      document.getElementById('btnVolver').style.display = 'none';
     }
   }
 
@@ -65,7 +65,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   onSubmit() {
     this.submitted = true;
     this.messageService.clear();
-    
+
     // stop here if form is invalid
     if (this.nuevaVotacionForm.invalid) {
       return;
@@ -118,8 +118,9 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
         .subscribe( _ => {
           this.loading = false;
 
+          this.messageService.add({texto: 'VOTACIONES.UPDATE', tipo: tipo.success});
+          this.messageService.add({texto: 'POSTGRES.UPDATE_OK', tipo: tipo.log});
           this.guardarEnElasticSearch();
-          this.volverListado();
         });
   }
 

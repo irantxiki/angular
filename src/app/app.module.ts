@@ -31,6 +31,7 @@ import { ReclamacionesService } from './servicios/reclamaciones.service';
 
 import { TipoAlertas } from './componentes/util/TipoAlertas';
 import { SearchReclamacionesComponent } from './componentes/search-reclamaciones/search-reclamaciones.component';
+import { PieComponent } from './componentes/comun/pie/pie.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -51,7 +52,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ReclamacionesComponent,
     SearchReclamacionesComponent,
     NavbarComponent,
-    ConfirmEliminarComponent
+    ConfirmEliminarComponent,
+    PieComponent
   ],
   imports: [
     BrowserModule,

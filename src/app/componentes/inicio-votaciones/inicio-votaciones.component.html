@@ -1,15 +1,17 @@
 <app-navbar></app-navbar>
-<div id="container">
+<div id="container" style="margin-bottom: 50px">
 
-    <app-sidebar></app-sidebar>
-    <!-- navegacion  -->
-    <div id="content">
-      <div class="my-3">
-        <!-- migas -->
-        <breadcrumb [allowBootstrap]="true"></breadcrumb>
-      </div>
-      <app-messages></app-messages>
-      <!-- Necesario para el rutado Iran -->
-      <router-outlet></router-outlet>
+  <app-sidebar></app-sidebar>
+  <!-- navegacion  -->
+  <div id="content">
+    <div class="my-3">
+      <!-- migas -->
+      <breadcrumb [allowBootstrap]="true"></breadcrumb>
     </div>
+    <app-messages></app-messages>
+    <!-- Necesario para el rutado Iran -->
+    <router-outlet></router-outlet>
   </div>
+</div>
+
+<app-pie></app-pie>

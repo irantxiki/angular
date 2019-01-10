@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Reclamacion } from 'src/app/modelo/reclamacion.model';
 import { ReclamacionesService } from 'src/app/servicios/reclamaciones.service';
+
 import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
+import { UploaderComponent } from '../util/uploader/uploader.component';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { tipo } from '../util/TipoAlertas';
 import { MessageService } from 'src/app/servicios/message.service';
 
-import { tipo } from '../util/TipoAlertas';
 
 @Component({
   selector: 'app-reclamaciones',
@@ -16,13 +19,10 @@ import { tipo } from '../util/TipoAlertas';
     }`]*/
 })
 export class ReclamacionesComponent {
-
-  selectedFiles: FileList;
-  currentFileUpload: File;
-  progress: { percentage: number } = { percentage: 0 };
   reclamacion: Reclamacion;
   validado = false;
-  porcentaje: number = null;
+  porcentaje = null;
+  ficheroSeleccionado: File;
 
   constructor(private reclamacionesService: ReclamacionesService,
               private messageService: MessageService,
@@ -30,8 +30,8 @@ export class ReclamacionesComponent {
     this.reclamacion = new Reclamacion();
   }
 
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
+  seleccionarFichero(fichero: File) {
+    this.ficheroSeleccionado = fichero;
   }
 
   guardar(formulario: NgForm) {
@@ -40,22 +40,20 @@ export class ReclamacionesComponent {
   }
 
   upload() {
-    this.progress.percentage = 0;
-
-
-    if (this.selectedFiles && this.selectedFiles.length > 0) {
-      this.currentFileUpload = this.selectedFiles.item(0);
-    } else {
-      this.currentFileUpload = null;
-    }
-
-    this.reclamacionesService.crearReclamacion(this.reclamacion, this.currentFileUpload)
+    this.reclamacionesService.crearReclamacion(this.reclamacion, this.ficheroSeleccionado)
     .subscribe( data => {
       if (data) {
+        console.log(data);
         this.porcentaje = data;
         this.guardarEnElasticSearch();
       }
+    },
+    _ => {},
+    () => {
+      this.messageService.add({texto: 'RECLAMACIONES.RECLAMACION_CREADA', tipo: tipo.success});
+      this.porcentaje = 0;
     });
+
   }
 
   /**
