@@ -8,14 +8,16 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 
+import { tipo } from '../componentes/util/TipoAlertas';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VotacionesService {
 
-  constructor(private http: HttpClient, private messageService: MessageService
-    ) {}
+  constructor(private http: HttpClient, private messageService: MessageService) {
+    messageService.clear();
+  }
 
   // Esto está configurado en el fichero proxy.config.json
   private baseUrl = '/votacionesServ';
@@ -57,18 +59,15 @@ export class VotacionesService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      this.messageService.add({texto: error.message, tipo: tipo.error});
 
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return Observable.throw(result as T);
     };
   }
 
   /** Log a VotacionesService message with the MessageService */
   private log(message: string) {
-    this.messageService.add(`VotacionesService: ${message}`);
+    this.messageService.add({texto: message, tipo: tipo.log});
   }
 }

@@ -1,31 +1,38 @@
 <form (ngSubmit)="guardar(formulario)" #formulario="ngForm" class="m-5" [ngClass]="{'was-validated' : validado}" novalidate>
   <div class="form-group">
-    <label for="nombre">Nombre</label>
+    <label for="nombre">{{'RECLAMACIONES.NOMBRE' | translate}}</label>
     <input type="text" class="form-control" placeholder="Nombre" name="nombre" minlength="5" required #nombre="ngModel"
       [(ngModel)]="reclamacion.nombre"
       [ngClass]="{ 'is-invalid': (nombre.errors?.minlength || nombre.errors?.required) && nombre.touched }">
-    <div class="invalid-feedback" *ngIf="nombre.errors?.required">Este campo es obligatorio</div>
-    <div class="invalid-feedback" *ngIf="nombre.errors?.minlength">Este campo debe tener al menos {{nombre.errors.minlength.requiredLength}} caracteres</div>
+    <div class="invalid-feedback" *ngIf="nombre.errors?.required">{{'RECLAMACIONES.T_OBLIGATORIO' | translate}}</div>
+    <div class="invalid-feedback" *ngIf="nombre.errors?.minlength" [translate]="'RECLAMACIONES.T_MIN_CHAR'" [translateParams]="{value: nombre.errors.minlength.requiredLength}"></div>
   </div>
   <div class="form-group">
-    <label for="telefono">Teléfono</label>
-    <input type="text" class="form-control" placeholder="Teléfono" name="telefono" [(ngModel)]="reclamacion.telefono" required #telefono="ngModel">
-    <div class="invalid-feedback" *ngIf="telefono.errors?.required">Este campo es obligatorio</div>
+    <label for="telefono">{{'RECLAMACIONES.TELEFONO' | translate}}</label>
+    <input type="text" class="form-control" placeholder="Teléfono" name="telefono" required #telefono="ngModel"
+      [(ngModel)]="reclamacion.telefono"
+      [ngClass]="{ 'is-invalid': nombre.errors?.required && telefono.touched }">
+    <div class="invalid-feedback" *ngIf="telefono.errors?.required">{{'RECLAMACIONES.T_OBLIGATORIO' | translate}}</div>
   </div>
   <div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="reclamacion.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    <div class="invalid-feedback" *ngIf="email.errors?.required">Este campo es obligatorio</div>
-    <div class="invalid-feedback" *ngIf="email.errors?.pattern">El correo no tiene el formato correcto</div>
+    <label for="email">{{'RECLAMACIONES.EMAIL' | translate}}</label>
+    <input type="email" class="form-control" placeholder="Email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel"
+      [(ngModel)]="reclamacion.email" 
+      [ngClass]="{ 'is-invalid': (nombre.errors?.required || email.errors?.pattern) && email.touched }">
+    <div class="invalid-feedback" *ngIf="email.errors?.required">{{'RECLAMACIONES.T_OBLIGATORIO' | translate}}</div>
+    <div class="invalid-feedback" *ngIf="email.errors?.pattern">{{'RECLAMACIONES.T_MAIL_FORMATO' | translate}}</div>
+    <small id="emailHelp" class="form-text text-muted">{{'RECLAMACIONES.NEVER_SHARE' | translate}}</small>
   </div>
   <div class="form-group">
-    <label for="texto">Texto</label>
-    <textarea class="form-control" rows="3" name="texto" [(ngModel)]="reclamacion.texto"></textarea >
+    <label for="texto">{{'RECLAMACIONES.COMENTARIO' | translate}}</label>
+    <textarea class="form-control" rows="3" name="texto" [(ngModel)]="reclamacion.comentario"></textarea >
   </div>
   <div class="form-group">
-    <label for="fichero">Fichero</label>
+    <label for="fichero">{{'RECLAMACIONES.FICHERO' | translate}}</label>
     <input type="file" class="form-control-file" (change)="selectFile($event)">
   </div>
-  <button [disabled]="!formulario.valid" type="submit" class="btn btn-primary">Submit</button>
+  <div *ngIf="porcentaje" class="form-group progress">
+    <div class="progress-bar" [ngClass]="{'progress-bar-striped progress-bar-animated': (0 <= porcentaje && porcentaje < 100)}" role="progressbar" [style.width.%]="porcentaje" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{porcentaje}}%</div>
+  </div>
+  <button [disabled]="!formulario.valid" type="submit" class="btn btn-primary">{{'RECLAMACIONES.ENVIAR' | translate}}</button>
 </form>

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
+import { tipo } from '../util/TipoAlertas';
+import { MessageService } from 'src/app/servicios/message.service';
 
 @Component({
   selector: 'app-lista-votaciones',
@@ -13,12 +15,8 @@ export class ListaVotacionesComponent implements OnInit {
 
   votaciones: Votaciones[];
 
-  constructor(private router: Router, private votacionesService: VotacionesService) {
-    // this.votaciones = [
-    // new Votaciones('angular', 'http://angular.io', 10, 1),
-    // new Votaciones('google', 'http://google.com', 100, 2),
-    // new Votaciones('youtube', 'http://youtube.com', 1000, 3)
-    // ];
+  constructor(private router: Router, private votacionesService: VotacionesService, private messageService: MessageService) {
+    this.messageService.clear();
   }
 
   votacionesOrdenadas() {
@@ -29,14 +27,14 @@ export class ListaVotacionesComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    /*this.votacionesService.getVotaciones().subscribe(
-    data => this.votaciones = data
-    );*/
-    this.votacionesService.getVotaciones()
-    .subscribe(votaciones => {
-      console.log('pasa por aqui');
+  inicializarVotaciones() {
+    this.votacionesService.getVotaciones().subscribe(votaciones => {
+      this.messageService.add({texto: 'Obtiene las votaciones de Postgres', tipo: tipo.log});
       this.votaciones = votaciones;
     });
+  }
+
+  ngOnInit() {
+    this.inicializarVotaciones();
   }
 }

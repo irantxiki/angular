@@ -5,6 +5,7 @@ import { ReclamacionesService } from 'src/app/servicios/reclamaciones.service';
 import { UploaderComponent } from '../util/uploader/uploader.component';
 import { VotacionesService } from 'src/app/servicios/votaciones.service';
 import { Votaciones } from 'src/app/modelo/votaciones.model';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reclamaciones',
@@ -21,32 +22,37 @@ export class ReclamacionesComponent {
   progress: { percentage: number } = { percentage: 0 };
   reclamacion: Reclamacion;
   validado = false;
+  porcentaje: number = null;
 
   constructor(private reclamacionesService: ReclamacionesService) {
-    this.reclamacion = new Reclamacion('Rafael', '999999999', 'adsf@gladj.com', 'cosas random');
+    this.reclamacion = new Reclamacion();
   }
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
 
-  upload() {
-    this.progress.percentage = 0;
-
-    this.currentFileUpload = this.selectedFiles.item(0);
-    //this.reclamacionesService.crearReclamacion(this.reclamacion, this.currentFileUpload)
-    this.reclamacionesService.pruebaFichero(this.currentFileUpload)
-    .subscribe( data => {
-     console.log(data);
-    });
-
-    //this.selectedFiles = undefined;
-  }
-
   guardar(formulario: NgForm) {
     this.validado = !this.validado;
     this.upload();
-    console.log(formulario);
+  }
+
+  upload() {
+    this.progress.percentage = 0;
+
+
+    if (this.selectedFiles && this.selectedFiles.length > 0) {
+      this.currentFileUpload = this.selectedFiles.item(0);
+    } else {
+      this.currentFileUpload = null;
+    }
+
+    this.reclamacionesService.crearReclamacion(this.reclamacion, this.currentFileUpload)
+    .subscribe( data => {
+      if (data) {
+        this.porcentaje = data;
+      }
+    });
   }
 
 }

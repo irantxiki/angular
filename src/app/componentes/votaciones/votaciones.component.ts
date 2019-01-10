@@ -1,14 +1,16 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
-import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 
 // Votaciones Class
 import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { MessageService } from '../../servicios/message.service';
 import { ConfirmEliminarComponent } from '../comun/confirm-eliminar/confirm-eliminar.component';
+import { tipo } from '../util/TipoAlertas';
+
+import { Observable } from 'rxjs';
+import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
 
 
 @Component({
@@ -20,35 +22,50 @@ export class VotacionesComponent implements OnInit {
   @HostBinding('attr.class') cssClass = 'row';
   @Input() votacionInput: Votaciones;
 
-  votaciones: Votaciones[];
+  public votaciones: Votaciones[];
 
-  modalReference: NgbModalRef;
+  @Output() recargarListado: EventEmitter<number>;
+  modalEliminarVotacion: NgbModalRef;
 
   constructor( private route: ActivatedRoute, private router: Router,
-              private votacionesService: VotacionesService, private messageService: MessageService,
-              private modalService: NgbModal
+              private votacionesService: VotacionesService,
+              private messageService: MessageService,
+              private modalService: NgbModal,
+              private es: ElasticsearchService
               ) {
-
+                this.recargarListado = new EventEmitter();
   }
 
   openEliminarModal(id: any) {
 
-    const modalRef = this.modalService.open(ConfirmEliminarComponent);
-    modalRef.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
-    modalRef.componentInstance.votacion = this.votacionInput;
+    this.modalEliminarVotacion = this.modalService.open(ConfirmEliminarComponent);
+    this.modalEliminarVotacion.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
+    this.modalEliminarVotacion.componentInstance.accion = () => this.onOkEliminarVotacion();
 
-    modalRef.result.then((result) => {
-      console.log(result);
-    }).catch((error) => {
-      console.log(error);
-    });
+    this.messageService.clear();
+
+  }
+
+  onOkEliminarVotacion() {
+      this.votacionesService.eliminarVotacion(this.votacionInput)
+        .subscribe(data  => {
+          this.recargarListado.emit ();
+          this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.success});
+
+          // eliminamos en elasticSearch
+          this.es.delete(this.votacionInput);
+      },
+      err => {});
   }
 
   voto(numero: number) {
     this.votacionInput.numero = numero;
     this.votacionInput.animacion = true;
     this.votacionesService.actualizarVotacion(this.votacionInput).subscribe(_ => {
-    this.votacionInput.animacion = false;
+      this.votacionInput.animacion = false;
+
+      // actualizar en elasticSearch
+      this.es.update(this.votacionInput);
     });
   }
 

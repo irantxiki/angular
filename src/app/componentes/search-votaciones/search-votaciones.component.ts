@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { VotacionesSource } from '../../modelo/votaciones.interface';
 import { ElasticsearchService } from '../../servicios/elasticsearch.service';
+import { MessageService } from 'src/app/servicios/message.service';
+import { tipo } from '../util/TipoAlertas';
 
 @Component({
   selector: 'app-search-votaciones',
   templateUrl: './search-votaciones.component.html',
-  styleUrls: ['./search-votaciones.component.css']
+  styleUrls: []
 })
 export class SearchVotacionesComponent implements OnInit {
-  private static readonly INDEX = 'gkz_index';
+  private static readonly INDEX = 'votaciones_index';
   private static readonly TYPE = 'votacion';
 
   votacionesSources: VotacionesSource[];
@@ -16,8 +18,9 @@ export class SearchVotacionesComponent implements OnInit {
 
   private lastKeypress = 0;
 
-  constructor(private es: ElasticsearchService) {
+  constructor(private es: ElasticsearchService, private messageService: MessageService) {
     this.queryText = '';
+    messageService.clear();
   }
 
   ngOnInit() {
@@ -32,12 +35,21 @@ export class SearchVotacionesComponent implements OnInit {
         SearchVotacionesComponent.TYPE,
         'titulo', this.queryText).then(
           response => {
-            this.votacionesSources = response.hits.hits;
+            if (response.hits.total > 0) {
+              this.votacionesSources = response.hits.hits.map(a => {
+                    a._source['id'] = a._id;
+                    return a._source;
+                  }
+              );
+            } else {
+              this.votacionesSources = [];
+            }
+
             console.log(response);
           }, error => {
-            console.error(error);
+            this.messageService.add({texto: error.message, tipo: tipo.error});
           }).then(() => {
-            console.log('Search Completed!');
+            this.messageService.add({texto: 'Search in Elasticsearch Completed!', tipo: tipo.log});
           });
     }
 

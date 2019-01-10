@@ -4,7 +4,17 @@
         "RECLAMACIONES-MENU":"Claim Management",
         "NUEVA": "New Claim",
         "LISTADO": "Claim List",
-        "BUSCADOR": "Claim Search"
+        "BUSCADOR": "Claim Search",
+        "NOMBRE": "Name",
+        "TELEFONO": "Telephone",
+        "EMAIL": "Email",
+        "COMENTARIO": "Commentary",
+        "FICHERO": "File",
+        "ENVIAR": "Submit",
+        "NEVER_SHARE": "We'll never share your email with anyone else.",
+        "T_OBLIGATORIO": "This field is required",
+        "T_MIN_CHAR": "This field must have at least {{value}} characters",
+        "T_MAIL_FORMATO": "This mail haven't a valid format"
     },
 
     "VOTACIONES": {
@@ -23,13 +33,14 @@
         "QUITAR": "Deduct",
         "CONFIRM_ELIMINAR": "Are you sure to eliminate the vote?",
         "SEARCH.TITULO": "Find votes by Title or Link information",
-        "SEARCH.SIN_DATOS": "There is no result with this search. Try again!"
+        "SEARCH.SIN_DATOS": "There is no result with this search. Try again!",
+        "ALTA": "The vote was created correctly"
     },
 
     "VERSION_APP": "Voting {{value}}",
     "SEARCH": "Search",
-    "MENSAGE": "Message",
-    "MENSAGES": "Messages",
+    "MENSAJE": "Message",
+    "MENSAJES": "Messages",
     "REGISTRAR": "Register",
     "LIMPIAR": "Clear",
     "SUBIR": "Upload File",
@@ -37,6 +48,16 @@
     "ACEPTAR": "Accept",
     "CANCELAR": "Cancel",
     "CONFIRMACION": "Confirmation",
-    "ELIMINAR": "Delete"
+    "ELIMINAR": "Delete",
+    "LOG": "VIEW LOGS",
+    "V_MENSAJE": "VIEW MESSAGE",
+    "POSTGRES": {
+        "ADD_OK": "Correctly saved in Postgres",
+        "ERROR": "Error saving in Postgres"
+    },
+    "ELASTIC": {
+        "ADD_OK": "Correctly saved in ElasticSearch",
+        "ERROR": "Error saving in ElasticSearch"
+    }
 }
 
