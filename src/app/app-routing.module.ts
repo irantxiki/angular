@@ -30,7 +30,7 @@ const APP_ROUTES: Routes = [
     data: {
         breadcrumb: 'Search Votaciones'
     }},
-    { path: 'detalle-votacion', component: VotacionesComponent,
+    { path: 'detalle-votacion', component: NuevaVotacionComponent,
     data: {
         breadcrumb: 'Detalle Votación'
     }}

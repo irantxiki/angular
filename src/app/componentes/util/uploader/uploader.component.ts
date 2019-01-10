@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { UploaderService } from '../../../servicios/uploader.service';
 
 @Component({
@@ -7,19 +7,23 @@ import { UploaderService } from '../../../servicios/uploader.service';
   providers: [ UploaderService ]
 })
 export class UploaderComponent {
-  message: string;
 
-  constructor(private uploaderService: UploaderService) {}
+  currentFileUpload: File;
 
-  onPicked(input: HTMLInputElement) {
-    const file = input.files[0];
-    if (file) {
-      this.uploaderService.upload(file).subscribe(
-        msg => {
-          input.value = null;
-          this.message = msg;
-        }
-      );
+  @Input() porcentaje: number;
+  @Output() ficheroSeleccionado: EventEmitter<File>;
+
+  constructor(private uploaderService: UploaderService) {
+    this.ficheroSeleccionado = new EventEmitter();
+  }
+
+  selectFile(event: any) {
+    if (event.target.files) {
+      this.currentFileUpload = event.target.files[0];
+    } else {
+      this.currentFileUpload = null;
     }
+
+    this.ficheroSeleccionado.emit(this.currentFileUpload);
   }
 }
