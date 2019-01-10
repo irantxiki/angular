@@ -16,7 +16,7 @@ const APP_ROUTES: Routes = [
     children: [
     { path: 'nueva-votacion', component: NuevaVotacionComponent },
     { path: 'lista-votaciones', component: ListaVotacionesComponent },
-    { path: 'detalle-votacion/:id', component: VotacionesComponent },
+    { path: 'detalle-votacion', component: NuevaVotacionComponent },
     { path: 'reclamaciones', component: ReclamacionesComponent },
     { path: 'nueva-votacion', component: NuevaVotacionComponent,
     data: {
@@ -30,7 +30,7 @@ const APP_ROUTES: Routes = [
     data: {
         breadcrumb: 'Search Votaciones'
     }},
-    { path: 'detalle-votacion/:id', component: VotacionesComponent,
+    { path: 'detalle-votacion', component: VotacionesComponent,
     data: {
         breadcrumb: 'Detalle Votación'
     }}

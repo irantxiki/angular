@@ -28,40 +28,28 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.sub = this.route.params.subscribe(params => {
-      console.log(params);
-      this.idEdit = params['id'];
-      console.log('RR 1');
-      console.log(this.idEdit);
-      console.log('RR 2');
+    this.nuevaVotacionForm = this.formBuilder.group({
+      titulo: ['', [
+        Validators.required,
+        Validators.minLength(4)
+      ]],
+      enlace: ['']
     });
 
-    if (this.idEdit) {
+    this.sub = this.route.params.subscribe(params => {
+
+      if (params.record) {
+        this.votacion = JSON.parse(params.record) as Votaciones;
+        this.nuevaVotacionForm.patchValue(this.votacion);
+      }
+    });
+
+    if (this.votacion) {
       this.tituloVentana = 'VOTACIONES.EDIT_VOTACION';
-
-      this.votacionesService.getVotacion(this.idEdit)
-        .subscribe(votacion => {
-          this.votacion = votacion;
-          console.log('Votacion Recuperada ' + this.votacion.titulo);
-        });
-
-      this.nuevaVotacionForm = this.formBuilder.group({
-        titulo: ['', [
-          Validators.required,
-          Validators.minLength(4)
-        ]],
-        enlace: ['']
-      });
+      document.getElementById('btnCancelar').style.display = 'block';
     } else {
       this.tituloVentana = 'VOTACIONES.ADD_VOTACION';
-      this.nuevaVotacionForm = this.formBuilder.group({
-        titulo: ['', [
-          Validators.required,
-          Validators.minLength(4)// ,
-          // forbiddenNameValidator(/bob/i) // <-- Here's how you pass in the custom validator.
-        ]],
-        enlace: ['']
-      });
+      document.getElementById('btnCancelar').style.display = 'none';
     }
   }
 
@@ -75,8 +63,12 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
     if (this.nuevaVotacionForm.invalid) {
       return;
     } else {
-      this.addVotacion(this.nuevaVotacionForm.controls['titulo'].value,
-      this.nuevaVotacionForm.controls['enlace'].value);
+      if (this.votacion) {
+        this.updateVotacion();
+      } else {
+        this.addVotacion(this.nuevaVotacionForm.controls['titulo'].value,
+        this.nuevaVotacionForm.controls['enlace'].value);
+      }
     }
   }
 
@@ -100,6 +92,29 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
 
           this.guardarEnElasticSearch();
         });
+  }
+
+   /**
+   * Guardamos en Postgre y en ElasticSearch
+   * @param votacion
+   */
+  updateVotacion(): void {
+    this.loading = true;
+
+    this.votacion.titulo = this.nuevaVotacionForm.controls['titulo'].value;
+    this.votacion.enlace = this.nuevaVotacionForm.controls['enlace'].value;
+
+    this.votacionesService.actualizarVotacion(this.votacion)
+        .subscribe( _ => {
+          this.loading = false;
+
+          this.guardarEnElasticSearch();
+          this.volverListado();
+        });
+  }
+
+  volverListado(): void {
+    this.router.navigate(['../lista-votaciones'], { relativeTo: this.route });
   }
 
   /**

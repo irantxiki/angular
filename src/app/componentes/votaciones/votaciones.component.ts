@@ -52,6 +52,10 @@ export class VotacionesComponent implements OnInit {
     });
   }
 
+  verDetalle() {
+    this.router.navigate(['/votaciones/detalle-votacion', { 'record': JSON.stringify(this.votacionInput) }]);
+  }
+
   ngOnInit() {
     /*
     this.votaciones$ = this.route.paramMap.pipe(
