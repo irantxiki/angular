@@ -11,7 +11,7 @@
                 </a>
             </div>
             <div class="col-md-1">
-              <a routerLink="/detalle-votacion/{{votacionInput.id}}">
+              <a [routerLink]="" (click)="verDetalle()" >
                 <i class="fa fa-plus" aria-hidden="true"></i>...
               </a>
             </div>
@@ -19,9 +19,6 @@
               <button type="button" class="btn btn-info" (click)="openEliminarModal('modalConfirmEliminar')">
                 {{'ELIMINAR' | translate}} 
               </button>
-                  <!-- <a href="modalConfirmEliminar" data-toggle="modal" data-target="modalConfirmEliminar"> 
-                    <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i>
-                  </a> -->
             </div>
         </div>
       </div>

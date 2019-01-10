@@ -42,6 +42,8 @@ export class VotacionesComponent implements OnInit {
     this.modalEliminarVotacion.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
     this.modalEliminarVotacion.componentInstance.accion = () => this.onOkEliminarVotacion();
 
+    this.messageService.clear();
+
   }
 
   onOkEliminarVotacion() {
@@ -65,6 +67,10 @@ export class VotacionesComponent implements OnInit {
       // actualizar en elasticSearch
       this.es.update(this.votacionInput);
     });
+  }
+
+  verDetalle() {
+    this.router.navigate(['/votaciones/detalle-votacion', { 'record': JSON.stringify(this.votacionInput) }]);
   }
 
   ngOnInit() {

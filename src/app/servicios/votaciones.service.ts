@@ -29,10 +29,6 @@ export class VotacionesService {
     );
   }
 
-  public getVotacion(id): Observable<Votaciones> {
-    return this.http.get<Votaciones>(this.baseUrl + '/votaciones' + id);
-  }
-
   public eliminarVotacion(votacion: Votaciones) {
     return this.http.post<Votaciones>(this.baseUrl + '/deleteVotacion', votacion)
     .pipe(
