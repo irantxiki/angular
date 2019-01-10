@@ -82,7 +82,7 @@ export class ElasticsearchService {
         telefono: reclamacion.telefono,
         email: reclamacion.email,
         comentario: reclamacion.comentario,
-        adjunto: reclamacion.adjunto,
+        // adjunto: reclamacion.adjunto,
         published: new Date().toLocaleString()
       }
     });
