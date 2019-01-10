@@ -76,7 +76,8 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     this.submitted = true;
-
+    this.messageService.clear();
+    
     // stop here if form is invalid
     if (this.nuevaVotacionForm.invalid) {
       return;
