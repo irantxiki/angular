@@ -28,7 +28,7 @@ export class VotacionesComponent implements OnInit {
   modalEliminarVotacion: NgbModalRef;
 
   constructor( private route: ActivatedRoute, private router: Router,
-              private votacionesService: VotacionesService, 
+              private votacionesService: VotacionesService,
               private messageService: MessageService,
               private modalService: NgbModal,
               private es: ElasticsearchService
@@ -50,7 +50,7 @@ export class VotacionesComponent implements OnInit {
           this.recargarListado.emit ();
           this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.success});
 
-          //eliminamos en elasticSearch
+          // eliminamos en elasticSearch
           this.es.delete(this.votacionInput);
       },
       err => {});
@@ -62,7 +62,7 @@ export class VotacionesComponent implements OnInit {
     this.votacionesService.actualizarVotacion(this.votacionInput).subscribe(_ => {
       this.votacionInput.animacion = false;
 
-      //actualizar en elasticSearch
+      // actualizar en elasticSearch
       this.es.update(this.votacionInput);
     });
   }
