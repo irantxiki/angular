@@ -14,6 +14,7 @@
         "T_OBLIGATORIO": "Este campo es obligatorio",
         "T_MIN_CHAR": "Este campo debe tener al menos {{value}} caracteres",
         "T_MAIL_FORMATO": "El correo no tiene el formato correcto",
+        "SEARCH.TITULO": "Encuentre información de las reclamaciones",
         "RECLAMACION_CREADA": "Se ha guardado la reclamación correctamente"
     },
 
@@ -38,7 +39,7 @@
         "UPDATE": "Se actualizó correctamente la votación"
     },
 
-    "VERSION_APP": "Votaciones {{value}}",
+    "VERSION_APP": "Votaciones {{value}} - {{value2}}",
     "SEARCH": "Buscar",
     "MENSAJE": "Mensaje",
     "MENSAJES": "Mensajes",

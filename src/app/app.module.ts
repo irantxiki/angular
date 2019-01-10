@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { createCustomElement } from '@angular/elements';
 
 import { AppComponent } from './app.component';
 import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
@@ -32,6 +30,8 @@ import { BreadcrumbsModule } from 'ng6-breadcrumbs';
 import { ReclamacionesService } from './servicios/reclamaciones.service';
 
 import { TipoAlertas } from './componentes/util/TipoAlertas';
+import { SearchReclamacionesComponent } from './componentes/search-reclamaciones/search-reclamaciones.component';
+import { PieComponent } from './componentes/comun/pie/pie.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -50,8 +50,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     SearchVotacionesComponent,
     SidebarComponent,
     ReclamacionesComponent,
+    SearchReclamacionesComponent,
     NavbarComponent,
-    ConfirmEliminarComponent
+    ConfirmEliminarComponent,
+    PieComponent
   ],
   imports: [
     BrowserModule,

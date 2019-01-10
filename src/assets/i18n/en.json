@@ -15,6 +15,7 @@
         "T_OBLIGATORIO": "This field is required",
         "T_MIN_CHAR": "This field must have at least {{value}} characters",
         "T_MAIL_FORMATO": "This mail haven't a valid format",
+        "SEARCH.TITULO": "Find claims information",
         "RECLAMACION_CREADA": "The claim has been saved correctly"
     },
 
@@ -39,7 +40,7 @@
         "UPDATE": "The vote was updated correctly"
     },
 
-    "VERSION_APP": "Voting {{value}}",
+    "VERSION_APP": "Voting {{value}} - {{value2}}",
     "SEARCH": "Search",
     "MENSAJE": "Message",
     "MENSAJES": "Messages",
