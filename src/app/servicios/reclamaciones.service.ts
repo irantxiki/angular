@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, last, map, tap } from 'rxjs/operators';
 import { Reclamacion } from '../modelo/reclamacion.model';
 import { tipo } from '../componentes/util/TipoAlertas';
+import Utils from '../componentes/util/Utils';
 
 @Injectable({
   providedIn: 'root'
@@ -26,18 +27,9 @@ export class ReclamacionesService {
     return this.http.post(this.baseUrl + '/saveReclamacion', formData,
       {reportProgress: true, observe: 'events'})
       .pipe(
-        map(event => this.getEventMessage(event)),
+        map(event => Utils.manageHttpEvents(event)),
         catchError(this.handleError<any>('post file'))
       );
-  }
-
-  private getEventMessage (event: HttpEvent<any>) {
-    if (event.type === HttpEventType.UploadProgress) {
-      const percentDone = Math.round(100 * event.loaded / event.total);
-      return percentDone;
-    } else if (event.type === HttpEventType.Response) {
-      return event.body;
-    }
   }
 
   /**

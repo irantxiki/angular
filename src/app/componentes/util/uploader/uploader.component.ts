@@ -1,10 +1,8 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { UploaderService } from '../../../servicios/uploader.service';
 
 @Component({
   selector: 'app-uploader',
-  templateUrl: './uploader.component.html',
-  providers: [ UploaderService ]
+  templateUrl: './uploader.component.html'
 })
 export class UploaderComponent {
 
@@ -13,7 +11,7 @@ export class UploaderComponent {
   @Input() porcentaje: number;
   @Output() ficheroSeleccionado: EventEmitter<File>;
 
-  constructor(private uploaderService: UploaderService) {
+  constructor() {
     this.ficheroSeleccionado = new EventEmitter();
   }
 
