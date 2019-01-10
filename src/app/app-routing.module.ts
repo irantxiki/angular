@@ -6,6 +6,7 @@ import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-v
 import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votacion.component';
 import { ReclamacionesComponent } from './componentes/reclamaciones/reclamaciones.component';
 import { SearchVotacionesComponent } from './componentes/search-votaciones/search-votaciones.component';
+import { SearchReclamacionesComponent } from './componentes/search-reclamaciones/search-reclamaciones.component';
 
 const APP_ROUTES: Routes = [
   { path: '', redirectTo: '/votaciones', pathMatch: 'full' },
@@ -17,7 +18,11 @@ const APP_ROUTES: Routes = [
     { path: 'reclamaciones', component: ReclamacionesComponent,
         data: {
             breadcrumb: 'Reclamaciones'
-        } },
+        }},
+    { path: 'search-reclamaciones', component: SearchReclamacionesComponent,
+        data: {
+            breadcrumb: 'Search Reclamaciones'
+        }},
     { path: 'nueva-votacion', component: NuevaVotacionComponent,
     data: {
         breadcrumb: 'Nueva Votación'
