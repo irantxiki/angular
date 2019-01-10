@@ -42,6 +42,8 @@ export class VotacionesComponent implements OnInit {
     this.modalEliminarVotacion.componentInstance.mensaje = 'VOTACIONES.CONFIRM_ELIMINAR';
     this.modalEliminarVotacion.componentInstance.accion = () => this.onOkEliminarVotacion();
 
+    this.messageService.clear();
+
   }
 
   onOkEliminarVotacion() {
