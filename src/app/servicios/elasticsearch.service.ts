@@ -31,7 +31,7 @@ export class ElasticsearchService {
   isAvailable(): any {
     return this.client.ping({
       requestTimeout: Infinity,
-      body: 'hello grokonez!'
+      body: 'You know, for search'
     });
   }
 
