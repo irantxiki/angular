@@ -35,7 +35,16 @@ export class SearchVotacionesComponent implements OnInit {
         SearchVotacionesComponent.TYPE,
         'titulo', this.queryText).then(
           response => {
-            this.votacionesSources = response.hits.hits.map(a => a._source);
+            if (response.hits.total > 0) {
+              this.votacionesSources = response.hits.hits.map(a => {
+                    a._source['id'] = a._id;
+                    return a._source;
+                  }
+              );
+            } else {
+              this.votacionesSources = [];
+            }
+
             console.log(response);
           }, error => {
             this.messageService.add({texto: error.message, tipo: tipo.error});
