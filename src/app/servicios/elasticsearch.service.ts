@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Client } from 'elasticsearch-browser';
 import { Votaciones } from '../modelo/votaciones.model';
+import { Reclamacion } from '../modelo/reclamacion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -57,7 +58,7 @@ export class ElasticsearchService {
     });
   }
 
-  addToIndex(votacion: Votaciones): any {
+  addVotacionToIndex(votacion: Votaciones): any {
     return this.client.create({
       index: 'votaciones_index',
       type: 'votacion',
@@ -66,6 +67,22 @@ export class ElasticsearchService {
         titulo: votacion.titulo,
         enlace: votacion.enlace,
         numero: votacion.numero,
+        published: new Date().toLocaleString()
+      }
+    });
+  }
+
+  addReclamacionToIndex(reclamacion: Reclamacion): any {
+    return this.client.create({
+      index: 'reclamaciones_index',
+      type: 'reclamacion',
+      id: reclamacion.id,
+      body: {
+        nombre: reclamacion.nombre,
+        telefono: reclamacion.telefono,
+        email: reclamacion.email,
+        comentario: reclamacion.comentario,
+        adjunto: reclamacion.adjunto,
         published: new Date().toLocaleString()
       }
     });
