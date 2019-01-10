@@ -33,7 +33,8 @@
         "CONFIRM_ELIMINAR": "¿Está seguro de eliminar la votación?",
         "SEARCH.TITULO": "Encuentre los votos buscando por título o enlace",
         "SEARCH.SIN_DATOS": "No se han encontrado datos con la búsqueda. ¡Inténtelo de nuevo!",
-        "ALTA": "Se creo correctamente la votación"
+        "ALTA": "Se creó correctamente la votación",
+        "UPDATE": "Se actualizó correctamente la votación"
     },
 
     "VERSION_APP": "Votaciones {{value}}",
@@ -46,12 +47,14 @@
     "SELECT_FICHERO": "Seleccionar fichero",
     "ACEPTAR": "Aceptar",
     "CANCELAR": "Cancelar",
+    "VOLVER": "Volver",
     "CONFIRMACION": "Confirmación",
     "ELIMINAR": "Eliminar",
     "LOG": "VER LOGS",
     "V_MENSAJE": "VER MENSAJE",
     "POSTGRES": {
         "ADD_OK": "Se ha añadido correctamente a Postgres",
+        "UPDATE_OK": "Se ha actualizado correctamente a Postgres",
         "ERROR": "Error al añadir a Postgres"
     },
     "ELASTIC": {
