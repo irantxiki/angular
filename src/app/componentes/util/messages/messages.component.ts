@@ -8,19 +8,17 @@ import { Mensaje } from '../../../servicios/message.service';
 })
 
 export class MessagesComponent {
-  log = false;
 
   constructor(public messageService: MessageService) { }
 
   commutar() {
     let mensajes: Mensaje[] = [];
 
-    if (this.log) {
+    if (this.messageService.mostrarLog) {
       mensajes = this.messageService.log;
     } else {
       mensajes = this.messageService.messages;
     }
-    this.log = !this.log;
 
     return mensajes;
   }

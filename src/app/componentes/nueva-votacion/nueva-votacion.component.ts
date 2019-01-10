@@ -115,17 +115,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
    * Guardamos en Elasticsearch
    */
   guardarEnElasticSearch(): void {
-    this.es.addToIndex({
-      index: 'votaciones_index',
-      type: 'votacion',
-      id: this.votacion.id,
-      body: {
-        titulo: this.votacion.titulo,
-        enlace: this.votacion.enlace,
-        numero: this.votacion.numero,
-        published: new Date().toLocaleString()
-      }
-    }).then((result) => {
+    this.es.addToIndex(this.votacion).then((result) => {
       this.messageService.add({texto: 'ELASTIC.ADD_OK', tipo: tipo.log});
     }, error => {
       this.messageService.add({texto: 'ELASTIC.ERROR', tipo: tipo.log});
