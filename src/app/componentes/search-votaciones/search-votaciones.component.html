@@ -2,10 +2,10 @@
 
 <div class="m-5">
   <label for="search">{{ 'VOTACIONES.SEARCH.TITULO'| translate }}</label>
-  <input id="search" type="text" (keyup)="search($event)" class="input m-2">
+  <input id="search" type="text" (keyup)="search($event)" class="input m-2" #inputSearch>
 
   <div *ngFor="let votacionSource of votacionesSources" style="margin-top:20px">
-    <app-votaciones [votacionInput]='votacionSource'></app-votaciones>
+    <app-votaciones (recargarListado)="recargarBusqueda()" [votacionInput]='votacionSource'></app-votaciones>
   </div>
 
   <div *ngIf="votacionesSources?.length < 1" style="margin-top:20px">

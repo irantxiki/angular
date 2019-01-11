@@ -49,11 +49,18 @@ export class VotacionesComponent implements OnInit {
   onOkEliminarVotacion() {
       this.votacionesService.eliminarVotacion(this.votacionInput)
         .subscribe(data  => {
-          this.recargarListado.emit ();
+
           this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.success});
 
           // eliminamos en elasticSearch
           this.es.deleteVotacion(this.votacionInput);
+
+          // Se espera a que se actualice el ElasticSearch
+          // setTimeout('', 5000);
+          setTimeout( () => { this.recargarListado.emit (); }, 500 );
+
+          // Se notifica el borrado
+          // this.recargarListado.emit ();
       },
       err => {});
   }
