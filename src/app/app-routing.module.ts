@@ -17,7 +17,7 @@ const APP_ROUTES: Routes = [
     children: [
     { path: 'reclamaciones', component: ReclamacionesComponent,
         data: {
-            breadcrumb: 'Reclamaciones'
+            breadcrumb: 'Nueva Reclamación'
         }},
     { path: 'search-reclamaciones', component: SearchReclamacionesComponent,
         data: {
