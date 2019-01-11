@@ -61,6 +61,7 @@ export class ReclamacionesComponent {
    * Guardamos en Elasticsearch
    */
   guardarEnElasticSearch(): void {
+    //this.reclamacion.adjunto = this.ficheroSeleccionado;
     this.es.addReclamacionToIndex(this.reclamacion).then((result) => {
       this.messageService.add({texto: 'ELASTIC.ADD_OK', tipo: tipo.log});
     }, error => {
