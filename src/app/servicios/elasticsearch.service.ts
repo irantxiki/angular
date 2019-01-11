@@ -39,7 +39,7 @@ export class ElasticsearchService {
     });
   }
 
-  delete(votacion: Votaciones): any {
+  deleteVotacion(votacion: Votaciones): any {
     return this.client.delete({
       index: 'votaciones_index',
       type: 'votacion',
@@ -47,14 +47,16 @@ export class ElasticsearchService {
     });
   }
 
-  update(votacion: Votaciones): void {
+  updateVotacion(votacion: Votaciones): any {
     return this.client.update({
       index: 'votaciones_index',
       type: 'votacion',
       id: votacion.id,
       body: {
         doc : {
-          numero: votacion.numero
+          numero: votacion.numero,
+          titulo: votacion.titulo,
+          enlace: votacion.enlace
         }
       }
     });

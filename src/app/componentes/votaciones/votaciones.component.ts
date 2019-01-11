@@ -53,7 +53,7 @@ export class VotacionesComponent implements OnInit {
           this.messageService.add({texto: 'Eliminado correctamente', tipo: tipo.success});
 
           // eliminamos en elasticSearch
-          this.es.delete(this.votacionInput);
+          this.es.deleteVotacion(this.votacionInput);
       },
       err => {});
   }
@@ -65,7 +65,7 @@ export class VotacionesComponent implements OnInit {
       this.votacionInput.animacion = false;
 
       // actualizar en elasticSearch
-      this.es.update(this.votacionInput);
+      this.es.updateVotacion(this.votacionInput);
     });
   }
 
