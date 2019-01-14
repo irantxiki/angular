@@ -22,7 +22,7 @@ const APP_ROUTES: Routes = [
         }},
     { path: 'reclamaciones', component: ListaReclamacionesComponent,
         data: {
-            breadcrumb: 'Reclamaciones'
+            breadcrumb: 'Nueva Reclamación'
         }},
     { path: 'search-reclamaciones', component: SearchReclamacionesComponent,
         data: {

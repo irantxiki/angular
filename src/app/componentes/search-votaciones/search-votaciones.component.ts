@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { VotacionesSource } from '../../modelo/votaciones.interface';
 import { ElasticsearchService } from '../../servicios/elasticsearch.service';
 import { MessageService } from 'src/app/servicios/message.service';
@@ -12,6 +12,8 @@ import { tipo } from '../util/TipoAlertas';
 export class SearchVotacionesComponent implements OnInit {
   private static readonly INDEX = 'votaciones_index';
   private static readonly TYPE = 'votacion';
+
+  @ViewChild('inputSearch') userInput: ElementRef;
 
   votacionesSources: VotacionesSource[];
   private queryText = '';
@@ -54,5 +56,10 @@ export class SearchVotacionesComponent implements OnInit {
     }
 
     this.lastKeypress = $event.timeStamp;
+  }
+
+  recargarBusqueda() {
+    const event = new KeyboardEvent('keyup', {'bubbles': true});
+    this.userInput.nativeElement.dispatchEvent(event);
   }
 }

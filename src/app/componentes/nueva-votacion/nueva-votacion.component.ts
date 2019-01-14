@@ -5,7 +5,7 @@ import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
 import { MessageService } from 'src/app/servicios/message.service';
-
+import {Location} from '@angular/common';
 import { tipo } from '../util/TipoAlertas';
 
 
@@ -28,7 +28,8 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private votacionesService: VotacionesService,
               private messageService: MessageService,
-              private es: ElasticsearchService) {
+              private es: ElasticsearchService,
+              private location: Location) {
     messageService.clear();
   }
 
@@ -120,12 +121,13 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
 
           this.messageService.add({texto: 'VOTACIONES.UPDATE', tipo: tipo.success});
           this.messageService.add({texto: 'POSTGRES.UPDATE_OK', tipo: tipo.log});
-          this.guardarEnElasticSearch();
+          this.updateEnElasticSearch();
         });
   }
 
   volverListado(): void {
-    this.router.navigate(['../lista-votaciones'], { relativeTo: this.route });
+    this.location.back();
+    // window.history.back();
   }
 
   /**
@@ -133,6 +135,17 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
    */
   guardarEnElasticSearch(): void {
     this.es.addVotacionToIndex(this.votacion).then((result) => {
+      this.messageService.add({texto: 'ELASTIC.ADD_OK', tipo: tipo.log});
+    }, error => {
+      this.messageService.add({texto: 'ELASTIC.ERROR', tipo: tipo.log});
+    });
+  }
+
+    /**
+   * Guardamos en Elasticsearch
+   */
+  updateEnElasticSearch(): void {
+    this.es.updateVotacion(this.votacion).then((result) => {
       this.messageService.add({texto: 'ELASTIC.ADD_OK', tipo: tipo.log});
     }, error => {
       this.messageService.add({texto: 'ELASTIC.ERROR', tipo: tipo.log});
