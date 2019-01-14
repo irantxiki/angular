@@ -1,0 +1,17 @@
+<div class="col-md-8 offset-md-2 mt-2">
+  <div class="card text-center">
+    <div class="card-header">
+      <h5 class="card-title">{{reclamacion.nombre}}</h5>
+    </div>
+    <div *ngIf="reclamacion.comentario != null" class="card-body">
+      <p class="card-text">{{reclamacion.comentario}} aadfasdf gadswef asgdasf </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{reclamacion.telefono}}</li>
+      <li class="list-group-item">{{reclamacion.email}}</li>
+    </ul>
+    <div *ngIf="reclamacion.fichero != null" class="card-body">
+      <a href="/votacionesServ/reclamacion/{{reclamacion.id}}/fichero" class="card-link"><i class="fas fa-download"></i> {{ 'RECLAMACIONES.FICHERO'| translate }}</a>
+    </div>
+  </div>
+</div>
