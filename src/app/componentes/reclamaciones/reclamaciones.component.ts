@@ -28,6 +28,7 @@ export class ReclamacionesComponent {
               private messageService: MessageService,
               private es: ElasticsearchService) {
     this.reclamacion = new Reclamacion();
+    messageService.clear();
   }
 
   seleccionarFichero(fichero: File) {
@@ -52,7 +53,7 @@ export class ReclamacionesComponent {
     () => {
       this.messageService.add({texto: 'RECLAMACIONES.RECLAMACION_CREADA', tipo: tipo.success});
       this.porcentaje = 0;
-      this.guardarEnElasticSearch();
+      //this.guardarEnElasticSearch();
     });
 
   }

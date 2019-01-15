@@ -19,7 +19,6 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   loading: boolean;
   nuevaVotacionForm: FormGroup;
   submitted = false;
-  idEdit: any;
   tituloVentana: string;
   votacion: any;
   private sub: any;
@@ -134,6 +133,7 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   guardarEnElasticSearch(): void {
     this.es.addVotacionToIndex(this.votacion).then((result) => {
       this.messageService.add({texto: 'ELASTIC.ADD_OK', tipo: tipo.log});
+      this.votacion = null;
     }, error => {
       this.messageService.add({texto: 'ELASTIC.ERROR', tipo: tipo.log});
     });
