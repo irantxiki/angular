@@ -32,6 +32,13 @@ export class ReclamacionesService {
       );
   }
 
+  public getReclamaciones(): Observable<Reclamacion[]> {
+    return this.http.get<Reclamacion[]>( this.baseUrl +  '/obtenerReclamacion')
+    .pipe(
+      catchError(this.handleError('getReclamaciones', []))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

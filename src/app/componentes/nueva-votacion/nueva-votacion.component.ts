@@ -5,7 +5,7 @@ import { Votaciones } from '../../modelo/votaciones.model';
 import { VotacionesService } from '../../servicios/votaciones.service';
 import { ElasticsearchService } from 'src/app/servicios/elasticsearch.service';
 import { MessageService } from 'src/app/servicios/message.service';
-
+import {Location} from '@angular/common';
 import { tipo } from '../util/TipoAlertas';
 
 
@@ -27,7 +27,8 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute,
               private votacionesService: VotacionesService,
               private messageService: MessageService,
-              private es: ElasticsearchService) {
+              private es: ElasticsearchService,
+              private location: Location) {
     messageService.clear();
   }
 
@@ -124,7 +125,8 @@ export class NuevaVotacionComponent implements OnInit, OnDestroy {
   }
 
   volverListado(): void {
-    this.router.navigate(['../lista-votaciones'], { relativeTo: this.route });
+    this.location.back();
+    // window.history.back();
   }
 
   /**
