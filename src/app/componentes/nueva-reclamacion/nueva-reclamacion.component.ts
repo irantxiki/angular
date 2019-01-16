@@ -11,14 +11,14 @@ import { MessageService } from 'src/app/servicios/message.service';
 
 
 @Component({
-  selector: 'app-reclamaciones',
-  templateUrl: './reclamaciones.component.html'/*,
+  selector: 'app-nueva-reclamacion',
+  templateUrl: './nueva-reclamacion.component.html'/*,
   styles: [`
     .ng-invalid.ng-touched:not(form) {
       border: 1px solid red;
     }`]*/
 })
-export class ReclamacionesComponent {
+export class NuevaReclamacionComponent {
   reclamacion: Reclamacion;
   validado = false;
   porcentaje = null;

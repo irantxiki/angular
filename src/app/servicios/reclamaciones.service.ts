@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent, HttpRequest, HttpHeaders, HttpEventType, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { MessageService } from './message.service';
 
 import { Observable, of } from 'rxjs';
-import { catchError, last, map, tap } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Reclamacion } from '../modelo/reclamacion.model';
 import { tipo } from '../componentes/util/TipoAlertas';
 import Utils from '../componentes/util/Utils';
+import { ReclamacionesSource } from '../modelo/reclamacion.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +34,17 @@ export class ReclamacionesService {
   }
 
   public getReclamaciones(): Observable<Reclamacion[]> {
-    return this.http.get<Reclamacion[]>( this.baseUrl +  '/obtenerReclamacion')
+    return this.http.get<Reclamacion[]>( this.baseUrl +  '/obtenerReclamaciones')
     .pipe(
       catchError(this.handleError('getReclamaciones', []))
+    );
+  }
+
+  public searchInReclamacionesAttachment(textoBusqueda: string): Observable<ReclamacionesSource[]> {
+    const params = new HttpParams().set('textoBusqueda', textoBusqueda);
+    return this.http.get<ReclamacionesSource[]>( this.baseUrl +  '/searchInReclamacionesAttachment', { params: params })
+    .pipe(
+      catchError(this.handleError('searchInReclamacionesAttachment', []))
     );
   }
 

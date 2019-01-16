@@ -1,10 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { InicioVotacionesComponent } from './componentes/inicio-votaciones/inicio-votaciones.component';
-import { VotacionesComponent } from './componentes/votaciones/votaciones.component';
 import { ListaVotacionesComponent } from './componentes/lista-votaciones/lista-votaciones.component';
 import { NuevaVotacionComponent } from './componentes/nueva-votacion/nueva-votacion.component';
-import { ReclamacionesComponent } from './componentes/reclamaciones/reclamaciones.component';
+import { NuevaReclamacionComponent } from './componentes/nueva-reclamacion/nueva-reclamacion.component';
 import { SearchVotacionesComponent } from './componentes/search-votaciones/search-votaciones.component';
 import { SearchReclamacionesComponent } from './componentes/search-reclamaciones/search-reclamaciones.component';
 import { ListaReclamacionesComponent } from './componentes/lista-reclamaciones/lista-reclamaciones.component';
@@ -16,13 +15,13 @@ const APP_ROUTES: Routes = [
         breadcrumb: 'Inicio'
     },
     children: [
-    { path: 'reclamacion', component: ReclamacionesComponent,
+    { path: 'reclamacion', component: NuevaReclamacionComponent,
         data: {
-            breadcrumb: 'Reclamaciones'
+            breadcrumb: 'Nueva Reclamación'
         }},
     { path: 'reclamaciones', component: ListaReclamacionesComponent,
         data: {
-            breadcrumb: 'Nueva Reclamación'
+            breadcrumb: 'Listado Reclamaciones'
         }},
     { path: 'search-reclamaciones', component: SearchReclamacionesComponent,
         data: {

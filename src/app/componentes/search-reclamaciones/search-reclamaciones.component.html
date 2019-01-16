@@ -2,13 +2,13 @@
 
 <div class="m-5">
   <label for="search">{{ 'RECLAMACIONES.SEARCH.TITULO'| translate }}</label>
-  <input id="search" type="text" (keyup)="search($event)" class="input m-2">
+  <input #inputSearch type="text" (keyup.enter)="search(inputSearch.value)"  (blur)="search(inputSearch.value)" class="input m-2">
 
-  <!-- <div *ngFor="let votacionSource of votacionesSources" style="margin-top:20px">
-    <app-votaciones [votacionInput]='votacionSource'></app-votaciones>
+  <div *ngFor="let reclamacionSource of reclamacionesSources" style="margin-top:20px">
+    <a href="/votacionesServ/reclamacion/{{reclamacionSource.id}}/fichero" class="card-link"><i class="fas fa-download"></i> {{ 'RECLAMACIONES.FICHERO'| translate }}</a>
   </div>
 
-  <div *ngIf="votacionesSources?.length < 1" style="margin-top:20px">
-    <p>{{ 'VOTACIONES.SEARCH.SIN_DATOS'| translate }}</p>
-  </div> -->
+  <div *ngIf="reclamacionesSources?.length < 1" style="margin-top:20px">
+    <p>{{ 'RECLAMACIONES.SEARCH.SIN_DATOS'| translate }}</p>
+  </div> 
 </div>

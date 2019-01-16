@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ReclamacionesSource } from '../../modelo/reclamacion.interface';
 import { ElasticsearchService } from '../../servicios/elasticsearch.service';
 import { MessageService } from 'src/app/servicios/message.service';
 import { tipo } from '../util/TipoAlertas';
+import { ReclamacionesService } from 'src/app/servicios/reclamaciones.service';
 
 @Component({
   selector: 'app-search-reclamaciones',
@@ -13,12 +14,14 @@ export class SearchReclamacionesComponent implements OnInit {
   private static readonly INDEX = 'reclamaciones_index';
   private static readonly TYPE = 'reclamacion';
 
+  @ViewChild('inputSearch') userInput: ElementRef;
+
   reclamacionesSources: ReclamacionesSource[];
   private queryText = '';
 
   private lastKeypress = 0;
 
-  constructor(private es: ElasticsearchService, private messageService: MessageService) {
+  constructor(private reclamacionesService: ReclamacionesService, private messageService: MessageService) {
     this.queryText = '';
     messageService.clear();
   }
@@ -26,33 +29,17 @@ export class SearchReclamacionesComponent implements OnInit {
   ngOnInit() {
   }
 
-  search($event) {
-    if ($event.timeStamp - this.lastKeypress > 100) {
-      this.queryText = $event.target.value;
-
-      this.es.fullTextSearch(
-        SearchReclamacionesComponent.INDEX,
-        SearchReclamacionesComponent.TYPE,
-        'nombre', this.queryText).then(
-          response => {
-            if (response.hits.total > 0) {
-              this.reclamacionesSources = response.hits.hits.map(a => {
-                    a._source['id'] = a._id;
-                    return a._source;
-                  }
-              );
+  search(textoBusqueda: string): void {
+      this.reclamacionesService.searchInReclamacionesAttachment(textoBusqueda)
+          .subscribe( data => {
+            if (data.length > 0) {
+              this.reclamacionesSources = data;
             } else {
               this.reclamacionesSources = [];
             }
-
-            console.log(response);
+            this.messageService.add({texto: 'Search in Elasticsearch Completed!', tipo: tipo.log});
           }, error => {
             this.messageService.add({texto: error.message, tipo: tipo.error});
-          }).then(() => {
-            this.messageService.add({texto: 'Search in Elasticsearch Completed!', tipo: tipo.log});
           });
-    }
-
-    this.lastKeypress = $event.timeStamp;
   }
 }

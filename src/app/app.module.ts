@@ -23,7 +23,7 @@ import { SearchVotacionesComponent } from './componentes/search-votaciones/searc
 // internacionalización
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { ReclamacionesComponent } from './componentes/reclamaciones/reclamaciones.component';
+import { NuevaReclamacionComponent } from './componentes/nueva-reclamacion/nueva-reclamacion.component';
 
 // migas
 import { BreadcrumbsModule } from 'ng6-breadcrumbs';
@@ -51,7 +51,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ListaVotacionesComponent,
     SearchVotacionesComponent,
     SidebarComponent,
-    ReclamacionesComponent,
+    NuevaReclamacionComponent,
     SearchReclamacionesComponent,
     NavbarComponent,
     ConfirmEliminarComponent,
