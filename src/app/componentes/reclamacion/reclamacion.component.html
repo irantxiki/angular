@@ -11,7 +11,7 @@
       <li class="list-group-item">{{reclamacion.email}}</li>
     </ul>
     <div *ngIf="reclamacion.fichero != null" class="card-body">
-      <a href="/votacionesServ/reclamacion/{{reclamacion.id}}/fichero" class="card-link"><i class="fas fa-download"></i> {{ 'RECLAMACIONES.FICHERO'| translate }}</a>
+      <a href="/votacionesServ/reclamacion/{{reclamacion.id}}/fichero" class="card-link"><i class="fas fa-download"></i> {{reclamacion.fichero}}</a>
     </div>
   </div>
 </div>

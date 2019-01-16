@@ -15,7 +15,7 @@
         "T_OBLIGATORIO": "This field is required",
         "T_MIN_CHAR": "This field must have at least {{value}} characters",
         "T_MAIL_FORMATO": "This mail haven't a valid format",
-        "SEARCH.TITULO": "Find claims information",
+        "SEARCH.TITULO": "Find information in claims attachment",
         "SEARCH.SIN_DATOS": "There is no result with this search. Try again!",
         "RECLAMACION_CREADA": "The claim has been saved correctly"
     },

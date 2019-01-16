@@ -4,7 +4,7 @@ export interface Reclamacion {
     telefono: string;
     email: string;
     comentario: string;
-    adjunto: File;
+    fichero: string;
 }
 
 export interface ReclamacionesSource {

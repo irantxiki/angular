@@ -4,7 +4,7 @@ export class Reclamacion {
     telefono: string;
     email: string;
     comentario: string;
-    adjunto: File;
+    fichero: string;
 
     constructor(nombre?: string, telefono?: string, email?: string, comentario?: string, id?: number) {
         this.id = id;
