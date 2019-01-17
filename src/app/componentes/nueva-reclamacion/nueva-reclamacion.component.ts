@@ -53,16 +53,15 @@ export class NuevaReclamacionComponent {
     () => {
       this.messageService.add({texto: 'RECLAMACIONES.RECLAMACION_CREADA', tipo: tipo.success});
       this.porcentaje = 0;
-      //this.guardarEnElasticSearch();
+      this.guardarEnElasticSearch();
     });
 
   }
 
   /**
-   * Guardamos en Elasticsearch
+   * Guardamos en Elasticsearch, pero sin el fichero adjunto
    */
   guardarEnElasticSearch(): void {
-    //this.reclamacion.adjunto = this.ficheroSeleccionado;
     this.es.addReclamacionToIndex(this.reclamacion).then((result) => {
       this.messageService.add({texto: 'ELASTIC.ADD_OK', tipo: tipo.log});
     }, error => {

@@ -3,10 +3,19 @@
 <div class="m-5">
   <label for="search">{{ 'RECLAMACIONES.SEARCH.TITULO'| translate }}</label>
   <input #inputSearch type="text" (keyup.enter)="search(inputSearch.value)" class="input m-2">
-
-  <div *ngFor="let reclamacionSource of reclamacionesSources" style="margin-top:20px">
-    <a href="/votacionesServ/reclamacion/{{reclamacionSource.id}}/fichero" class="card-link"><i class="fas fa-download"></i> {{reclamacionSource.fichero}}</a>
-  </div>
+  
+  <table class="table">
+    <tbody>
+    <div *ngFor="let reclamacionSource of reclamacionesSources" style="margin-top:20px">
+        <tr>
+          <td> {{reclamacionSource.nombre}}</td>
+          <td> {{reclamacionSource.email}}</td>
+          <td> {{reclamacionSource.telefono}}</td>
+          <td> <a href="/votacionesServ/reclamacion/{{reclamacionSource.id}}/fichero" class="card-link"><i class="fas fa-download"></i> {{reclamacionSource.fichero}}</a></td>
+        </tr>
+    </div>
+    </tbody>
+  </table>
 
   <div *ngIf="reclamacionesSources?.length < 1" style="margin-top:20px">
     <p>{{ 'RECLAMACIONES.SEARCH.SIN_DATOS'| translate }}</p>

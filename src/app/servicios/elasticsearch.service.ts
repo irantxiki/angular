@@ -86,50 +86,9 @@ export class ElasticsearchService {
         telefono: reclamacion.telefono,
         email: reclamacion.email,
         comentario: reclamacion.comentario,
-        adjunto: reclamacion.adjunto,
         published: new Date().toLocaleString()
       }
     });
-
-    // return this.client._ingest({
-    //   index: 'reclamaciones_index',
-    //   type: 'reclamacion',
-    //   id: reclamacion.id,
-    //   body: {
-    //     nombre: reclamacion.nombre,
-    //     telefono: reclamacion.telefono,
-    //     email: reclamacion.email,
-    //     comentario: reclamacion.comentario,
-    //     adjunto: reclamacion.adjunto,
-    //     published: new Date().toLocaleString()
-    //   }
-    // });
-    
-    // const opciones = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type' : 'application/json'
-    //   })
-    // };
-
-    // this.http.put('http://127.0.0.1:9200/_ingest/pipeline/attachment', {
-    //   description : 'Tipo ' + reclamacion.adjunto.type + ' | ' + reclamacion.adjunto.name,
-    //     processors : [
-    //     {
-    //       attachment : {
-    //         field : 'data',
-    //         properties : [ 'content', 'title', 'name', 'author', 'keywords', 'date', 'content_type', 'content_length', 'language']
-    //       }        
-    //     }
-    //   ]
-    // //   // ,
-    // //   // data : [{
-    // //   //   reclamacion.adjunto
-    // //   // }]
-    // }, opciones);
-    //   .subscribe(
-    //     res => {console.log(res);
-    //     console.log('Funciona')}
-    //  );
   }
 
   getAllDocuments(_index, _type): any {
