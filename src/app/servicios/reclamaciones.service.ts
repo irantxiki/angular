@@ -8,6 +8,7 @@ import { Reclamacion } from '../modelo/reclamacion.model';
 import { tipo } from '../componentes/util/TipoAlertas';
 import Utils from '../componentes/util/Utils';
 import { ReclamacionesSource } from '../modelo/reclamacion.interface';
+import { UsuarioReclamacion } from '../componentes/comun/tabla/tabla.component';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,13 @@ export class ReclamacionesService {
     return this.http.get<Reclamacion[]>( this.baseUrl +  '/obtenerReclamaciones')
     .pipe(
       catchError(this.handleError('getReclamaciones', []))
+    );
+  }
+
+  public getReclamacionesUsuario(): Observable<UsuarioReclamacion[]> {
+    return this.http.get<UsuarioReclamacion[]>( this.baseUrl +  '/obtenerUsuariosReclamaciones')
+    .pipe(
+      catchError(this.handleError('getReclamacionesUsuario', []))
     );
   }
 

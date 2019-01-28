@@ -1,10 +1,10 @@
 export class Reclamacion {
-    id: number;
+    id?: number;
     nombre: string;
     telefono: string;
     email: string;
     comentario: string;
-    fichero: string;
+    fichero?: string;
 
     constructor(nombre?: string, telefono?: string, email?: string, comentario?: string, id?: number) {
         this.id = id;
